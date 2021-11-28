@@ -12,7 +12,7 @@ namespace Guide
         GuideWidth,
         GuideDepth,
         GuideAngle,
-        HoleRadius,
+        HoleDiameter,
         AttachmentStrokeLength,
         AttachmentStrokeWidth
     }

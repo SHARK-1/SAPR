@@ -30,12 +30,12 @@ namespace GuideUI
         private void InitializeComponent()
         {
             this.GuideLengthTextBox = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.GuideWidthTextBox = new System.Windows.Forms.TextBox();
+            this.GuideDepthTextBox = new System.Windows.Forms.TextBox();
+            this.HoleDiameterTextBox = new System.Windows.Forms.TextBox();
+            this.AttachmentStrokeWidthTextBox = new System.Windows.Forms.TextBox();
+            this.AttachmentStrokeLengthTextBox = new System.Windows.Forms.TextBox();
+            this.GuideAngleTextBox = new System.Windows.Forms.TextBox();
             this.BuildButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -45,11 +45,11 @@ namespace GuideUI
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
+            this.GuideWidthLabel = new System.Windows.Forms.Label();
+            this.AttachmentStrokeLengthLabel = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
+            this.AttachmentStrokeWidthLabel = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -64,59 +64,79 @@ namespace GuideUI
             this.GuideLengthTextBox.Name = "GuideLengthTextBox";
             this.GuideLengthTextBox.Size = new System.Drawing.Size(93, 26);
             this.GuideLengthTextBox.TabIndex = 0;
+            this.GuideLengthTextBox.Text = "50";
+            this.GuideLengthTextBox.Enter += new System.EventHandler(this.GuideLengthTextBox_Enter);
             this.GuideLengthTextBox.Leave += new System.EventHandler(this.GuideLengthTextBox_Leave);
             // 
-            // textBox2
+            // GuideWidthTextBox
             // 
-            this.textBox2.BackColor = System.Drawing.Color.White;
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox2.Location = new System.Drawing.Point(256, 34);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(93, 26);
-            this.textBox2.TabIndex = 1;
+            this.GuideWidthTextBox.BackColor = System.Drawing.Color.White;
+            this.GuideWidthTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.GuideWidthTextBox.Location = new System.Drawing.Point(256, 34);
+            this.GuideWidthTextBox.Name = "GuideWidthTextBox";
+            this.GuideWidthTextBox.Size = new System.Drawing.Size(93, 26);
+            this.GuideWidthTextBox.TabIndex = 1;
+            this.GuideWidthTextBox.Text = "10";
+            this.GuideWidthTextBox.Enter += new System.EventHandler(this.GuideWidthTextBox_Enter);
+            this.GuideWidthTextBox.Leave += new System.EventHandler(this.GuideWidthTextBox_Leave);
             // 
-            // textBox3
+            // GuideDepthTextBox
             // 
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox3.Location = new System.Drawing.Point(256, 66);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(93, 26);
-            this.textBox3.TabIndex = 2;
+            this.GuideDepthTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.GuideDepthTextBox.Location = new System.Drawing.Point(256, 66);
+            this.GuideDepthTextBox.Name = "GuideDepthTextBox";
+            this.GuideDepthTextBox.Size = new System.Drawing.Size(93, 26);
+            this.GuideDepthTextBox.TabIndex = 2;
+            this.GuideDepthTextBox.Text = "5";
+            this.GuideDepthTextBox.Enter += new System.EventHandler(this.GuideDepthTextBox_Enter);
+            this.GuideDepthTextBox.Leave += new System.EventHandler(this.GuideDepthTextBox_Leave);
             // 
-            // textBox4
+            // HoleDiameterTextBox
             // 
-            this.textBox4.BackColor = System.Drawing.Color.White;
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox4.Location = new System.Drawing.Point(256, 162);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(93, 26);
-            this.textBox4.TabIndex = 5;
+            this.HoleDiameterTextBox.BackColor = System.Drawing.Color.White;
+            this.HoleDiameterTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.HoleDiameterTextBox.Location = new System.Drawing.Point(256, 162);
+            this.HoleDiameterTextBox.Name = "HoleDiameterTextBox";
+            this.HoleDiameterTextBox.Size = new System.Drawing.Size(93, 26);
+            this.HoleDiameterTextBox.TabIndex = 5;
+            this.HoleDiameterTextBox.Text = "2";
+            this.HoleDiameterTextBox.Enter += new System.EventHandler(this.HoleDiameterTextBox_Enter);
+            this.HoleDiameterTextBox.Leave += new System.EventHandler(this.HoleDiameterTextBox_Leave);
             // 
-            // textBox5
+            // AttachmentStrokeWidthTextBox
             // 
-            this.textBox5.BackColor = System.Drawing.Color.White;
-            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox5.Location = new System.Drawing.Point(256, 130);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(93, 26);
-            this.textBox5.TabIndex = 4;
+            this.AttachmentStrokeWidthTextBox.BackColor = System.Drawing.Color.White;
+            this.AttachmentStrokeWidthTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.AttachmentStrokeWidthTextBox.Location = new System.Drawing.Point(256, 130);
+            this.AttachmentStrokeWidthTextBox.Name = "AttachmentStrokeWidthTextBox";
+            this.AttachmentStrokeWidthTextBox.Size = new System.Drawing.Size(93, 26);
+            this.AttachmentStrokeWidthTextBox.TabIndex = 4;
+            this.AttachmentStrokeWidthTextBox.Text = "7";
+            this.AttachmentStrokeWidthTextBox.Enter += new System.EventHandler(this.AttachmentStrokeWidthTextBox_Enter);
+            this.AttachmentStrokeWidthTextBox.Leave += new System.EventHandler(this.AttachmentStrokeWidthTextBox_Leave);
             // 
-            // textBox6
+            // AttachmentStrokeLengthTextBox
             // 
-            this.textBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox6.Location = new System.Drawing.Point(256, 98);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(93, 26);
-            this.textBox6.TabIndex = 3;
+            this.AttachmentStrokeLengthTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.AttachmentStrokeLengthTextBox.Location = new System.Drawing.Point(256, 98);
+            this.AttachmentStrokeLengthTextBox.Name = "AttachmentStrokeLengthTextBox";
+            this.AttachmentStrokeLengthTextBox.Size = new System.Drawing.Size(93, 26);
+            this.AttachmentStrokeLengthTextBox.TabIndex = 3;
+            this.AttachmentStrokeLengthTextBox.Text = "35";
+            this.AttachmentStrokeLengthTextBox.Enter += new System.EventHandler(this.AttachmentStrokeLengthTextBox_Enter);
+            this.AttachmentStrokeLengthTextBox.Leave += new System.EventHandler(this.AttachmentStrokeLengthTextBox_Leave);
             // 
-            // textBox7
+            // GuideAngleTextBox
             // 
-            this.textBox7.BackColor = System.Drawing.Color.White;
-            this.textBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox7.Location = new System.Drawing.Point(256, 194);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(93, 26);
-            this.textBox7.TabIndex = 6;
+            this.GuideAngleTextBox.BackColor = System.Drawing.Color.White;
+            this.GuideAngleTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.GuideAngleTextBox.Location = new System.Drawing.Point(256, 194);
+            this.GuideAngleTextBox.Name = "GuideAngleTextBox";
+            this.GuideAngleTextBox.Size = new System.Drawing.Size(93, 26);
+            this.GuideAngleTextBox.TabIndex = 6;
+            this.GuideAngleTextBox.Text = "65";
+            this.GuideAngleTextBox.Enter += new System.EventHandler(this.GuideAngleTextBox_Enter);
+            this.GuideAngleTextBox.Leave += new System.EventHandler(this.GuideAngleTextBox_Leave);
             // 
             // BuildButton
             // 
@@ -208,25 +228,25 @@ namespace GuideUI
             this.label8.TabIndex = 16;
             this.label8.Text = "(50 - 150 мм)";
             // 
-            // label9
+            // GuideWidthLabel
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label9.Location = new System.Drawing.Point(355, 40);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(94, 20);
-            this.label9.TabIndex = 17;
-            this.label9.Text = "(10 - 30 мм)";
+            this.GuideWidthLabel.AutoSize = true;
+            this.GuideWidthLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.GuideWidthLabel.Location = new System.Drawing.Point(355, 40);
+            this.GuideWidthLabel.Name = "GuideWidthLabel";
+            this.GuideWidthLabel.Size = new System.Drawing.Size(94, 20);
+            this.GuideWidthLabel.TabIndex = 17;
+            this.GuideWidthLabel.Text = "(10 - 30 мм)";
             // 
-            // label10
+            // AttachmentStrokeLengthLabel
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label10.Location = new System.Drawing.Point(355, 104);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(103, 20);
-            this.label10.TabIndex = 19;
-            this.label10.Text = "(20 - 100 мм)";
+            this.AttachmentStrokeLengthLabel.AutoSize = true;
+            this.AttachmentStrokeLengthLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.AttachmentStrokeLengthLabel.Location = new System.Drawing.Point(355, 104);
+            this.AttachmentStrokeLengthLabel.Name = "AttachmentStrokeLengthLabel";
+            this.AttachmentStrokeLengthLabel.Size = new System.Drawing.Size(103, 20);
+            this.AttachmentStrokeLengthLabel.TabIndex = 19;
+            this.AttachmentStrokeLengthLabel.Text = "(35 - 135 мм)";
             // 
             // label11
             // 
@@ -248,15 +268,15 @@ namespace GuideUI
             this.label12.TabIndex = 21;
             this.label12.Text = "(2 - 20 мм)";
             // 
-            // label13
+            // AttachmentStrokeWidthLabel
             // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label13.Location = new System.Drawing.Point(355, 136);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(85, 20);
-            this.label13.TabIndex = 20;
-            this.label13.Text = "(2 - 20 мм)";
+            this.AttachmentStrokeWidthLabel.AutoSize = true;
+            this.AttachmentStrokeWidthLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.AttachmentStrokeWidthLabel.Location = new System.Drawing.Point(355, 136);
+            this.AttachmentStrokeWidthLabel.Name = "AttachmentStrokeWidthLabel";
+            this.AttachmentStrokeWidthLabel.Size = new System.Drawing.Size(76, 20);
+            this.AttachmentStrokeWidthLabel.TabIndex = 20;
+            this.AttachmentStrokeWidthLabel.Text = "(7 - 9 мм)";
             // 
             // label14
             // 
@@ -267,11 +287,10 @@ namespace GuideUI
             this.label14.Size = new System.Drawing.Size(82, 20);
             this.label14.TabIndex = 22;
             this.label14.Text = "(65 - 270°)";
-            this.label14.Click += new System.EventHandler(this.label14_Click);
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::GuideUI.Properties.Resources._6;
+            this.pictureBox1.Image = global::GuideUI.Properties.Resources._1;
             this.pictureBox1.Location = new System.Drawing.Point(501, 2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(340, 250);
@@ -286,10 +305,10 @@ namespace GuideUI
             this.ClientSize = new System.Drawing.Size(850, 264);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label12);
-            this.Controls.Add(this.label13);
-            this.Controls.Add(this.label10);
+            this.Controls.Add(this.AttachmentStrokeWidthLabel);
+            this.Controls.Add(this.AttachmentStrokeLengthLabel);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.label9);
+            this.Controls.Add(this.GuideWidthLabel);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label7);
@@ -300,12 +319,12 @@ namespace GuideUI
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.BuildButton);
-            this.Controls.Add(this.textBox7);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.GuideAngleTextBox);
+            this.Controls.Add(this.HoleDiameterTextBox);
+            this.Controls.Add(this.AttachmentStrokeWidthTextBox);
+            this.Controls.Add(this.AttachmentStrokeLengthTextBox);
+            this.Controls.Add(this.GuideDepthTextBox);
+            this.Controls.Add(this.GuideWidthTextBox);
             this.Controls.Add(this.GuideLengthTextBox);
             this.Name = "MainForm";
             this.Text = "Направляющая";
@@ -318,12 +337,12 @@ namespace GuideUI
         #endregion
 
         private System.Windows.Forms.TextBox GuideLengthTextBox;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox GuideWidthTextBox;
+        private System.Windows.Forms.TextBox GuideDepthTextBox;
+        private System.Windows.Forms.TextBox HoleDiameterTextBox;
+        private System.Windows.Forms.TextBox AttachmentStrokeWidthTextBox;
+        private System.Windows.Forms.TextBox AttachmentStrokeLengthTextBox;
+        private System.Windows.Forms.TextBox GuideAngleTextBox;
         private System.Windows.Forms.Button BuildButton;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
@@ -334,11 +353,11 @@ namespace GuideUI
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label GuideWidthLabel;
+        private System.Windows.Forms.Label AttachmentStrokeLengthLabel;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label AttachmentStrokeWidthLabel;
         private System.Windows.Forms.Label label14;
     }
 }

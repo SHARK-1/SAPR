@@ -194,12 +194,42 @@ namespace Kompas
         private void CreateHole()
         {
             KompasObject kompas = _kompasConnector.Kompas;
-            _currentPlan = (ksEntity)_part.GetDefaultEntity((short)Obj3dType.o3d_planeXOY); // 1-интерфейс на плоскость XOY
+            _currentPlan = (ksEntity)_part.GetDefaultEntity((short)Obj3dType.o3d_planeXOZ); // 1-интерфейс на плоскость XOY
             _sketch = (ksEntity)_part.NewEntity((short)Obj3dType.o3d_sketch);
             _sketchDefinition = (ksSketchDefinition)_sketch.GetDefinition();
             _sketchDefinition.SetPlane(_currentPlan);
             _sketch.Create();
             _document2D = (ksDocument2D)_sketchDefinition.BeginEdit();
+            double[,] points = new double[5, 2] {
+                { -_guideParameters.GuideLength, 0 },
+                { -_guideParameters.GuideLength, +5+0.75*_guideParameters.HoleDiameter },
+                { -_guideParameters.GuideLength+10+1.5*_guideParameters.HoleDiameter, 0 },
+                { -_guideParameters.GuideLength+10+1.5*_guideParameters.HoleDiameter,5+0.75*_guideParameters.HoleDiameter },
+                { -_guideParameters.GuideLength+5+0.75*_guideParameters.HoleDiameter,5+0.75*_guideParameters.HoleDiameter } };
+            _document2D.ksLineSeg(points[0, 0], points[0, 1], points[1, 0], points[1, 1], 1);
+            _document2D.ksLineSeg(points[0, 0], points[0, 1], points[2, 0], points[2, 1], 1);
+            _document2D.ksLineSeg(points[2, 0], points[2, 1], points[3, 0], points[3, 1], 1);
+            _document2D.ksArcByPoint(points[4, 0], points[4, 1], _guideParameters.HoleDiameter*0.75 + 5,
+                points[1, 0], points[1, 1], points[3, 0], points[3, 1], -1, 1);
+            _document2D.ksCircle(points[4, 0], points[4, 1], _guideParameters.HoleDiameter / 2, 1);
+            
+
+            _sketchDefinition.EndEdit();
+
+            //Выдавливание
+            var entityExtrude = (ksEntity)_part.NewEntity((short)Obj3dType.o3d_bossExtrusion);
+            // интерфейс базовой операции выдавливания
+            var entityExtrudeDefinition = (ksBossExtrusionDefinition)entityExtrude.GetDefinition();
+            // интерфейс структуры параметров выдавливания
+            ksExtrusionParam extrudeParameters = (ksExtrusionParam)entityExtrudeDefinition.ExtrusionParam();
+            extrudeParameters.direction = (short)Direction_Type.dtNormal;
+
+            entityExtrudeDefinition.SetSketch(_sketch);
+            // тип выдавливания (строго на глубину)
+            extrudeParameters.typeNormal = (short)End_Type.etBlind;
+            // глубина выдавливания
+            extrudeParameters.depthNormal = _guideParameters.GuideWidth/2;
+            entityExtrude.Create();
         }
     }
 }

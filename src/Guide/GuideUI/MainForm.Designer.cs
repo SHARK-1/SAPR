@@ -111,7 +111,7 @@ namespace GuideUI
             this.AttachmentStrokeWidthTextBox.Name = "AttachmentStrokeWidthTextBox";
             this.AttachmentStrokeWidthTextBox.Size = new System.Drawing.Size(93, 26);
             this.AttachmentStrokeWidthTextBox.TabIndex = 4;
-            this.AttachmentStrokeWidthTextBox.Text = "7";
+            this.AttachmentStrokeWidthTextBox.Text = "3";
             this.AttachmentStrokeWidthTextBox.Enter += new System.EventHandler(this.AttachmentStrokeWidthTextBox_Enter);
             this.AttachmentStrokeWidthTextBox.Leave += new System.EventHandler(this.AttachmentStrokeWidthTextBox_Leave);
             // 
@@ -122,7 +122,7 @@ namespace GuideUI
             this.AttachmentStrokeLengthTextBox.Name = "AttachmentStrokeLengthTextBox";
             this.AttachmentStrokeLengthTextBox.Size = new System.Drawing.Size(93, 26);
             this.AttachmentStrokeLengthTextBox.TabIndex = 3;
-            this.AttachmentStrokeLengthTextBox.Text = "35";
+            this.AttachmentStrokeLengthTextBox.Text = "15";
             this.AttachmentStrokeLengthTextBox.Enter += new System.EventHandler(this.AttachmentStrokeLengthTextBox_Enter);
             this.AttachmentStrokeLengthTextBox.Leave += new System.EventHandler(this.AttachmentStrokeLengthTextBox_Leave);
             // 
@@ -244,9 +244,9 @@ namespace GuideUI
             this.AttachmentStrokeLengthLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.AttachmentStrokeLengthLabel.Location = new System.Drawing.Point(355, 104);
             this.AttachmentStrokeLengthLabel.Name = "AttachmentStrokeLengthLabel";
-            this.AttachmentStrokeLengthLabel.Size = new System.Drawing.Size(103, 20);
+            this.AttachmentStrokeLengthLabel.Size = new System.Drawing.Size(94, 20);
             this.AttachmentStrokeLengthLabel.TabIndex = 19;
-            this.AttachmentStrokeLengthLabel.Text = "(35 - 135 мм)";
+            this.AttachmentStrokeLengthLabel.Text = "(15 - 90 мм)";
             // 
             // label11
             // 
@@ -276,7 +276,7 @@ namespace GuideUI
             this.AttachmentStrokeWidthLabel.Name = "AttachmentStrokeWidthLabel";
             this.AttachmentStrokeWidthLabel.Size = new System.Drawing.Size(76, 20);
             this.AttachmentStrokeWidthLabel.TabIndex = 20;
-            this.AttachmentStrokeWidthLabel.Text = "(7 - 9 мм)";
+            this.AttachmentStrokeWidthLabel.Text = "(3 - 5 мм)";
             // 
             // label14
             // 

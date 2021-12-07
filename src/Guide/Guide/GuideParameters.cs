@@ -28,16 +28,16 @@ namespace Guide
             _guideDepth = 5;
             _guideAngle = 65;
             _holeDiameter = 2;
-            _attachmentStrokeLength = 35;
-            _attachmentStrokeWidth = 7;
+            _attachmentStrokeLength = 15;
+            _attachmentStrokeWidth = 3;
             _rangeDictionary = new Dictionary<ParametersEnum, Range>();
             _rangeDictionary.Add(ParametersEnum.GuideLength, new Range(50, 150));
             _rangeDictionary.Add(ParametersEnum.GuideWidth, new Range(10, 30));
             _rangeDictionary.Add(ParametersEnum.GuideDepth, new Range(5, 20));
             _rangeDictionary.Add(ParametersEnum.GuideAngle, new Range(65, 270));
             _rangeDictionary.Add(ParametersEnum.HoleDiameter, new Range(2, 20));
-            _rangeDictionary.Add(ParametersEnum.AttachmentStrokeLength, new Range(35, 135));
-            _rangeDictionary.Add(ParametersEnum.AttachmentStrokeWidth, new Range(7, 9));
+            _rangeDictionary.Add(ParametersEnum.AttachmentStrokeLength, new Range(15, 90));
+            _rangeDictionary.Add(ParametersEnum.AttachmentStrokeWidth, new Range(3, 5));
         }
         public double GuideLength
         {
@@ -63,7 +63,7 @@ namespace Guide
                 if (Validator.ValidateRange(value, range.Min, range.Max))
                 {
                     _guideWidth = value;
-                    _rangeDictionary[ParametersEnum.AttachmentStrokeWidth] = new Range(0.7 * _guideWidth, 0.9 * _guideWidth);
+                    _rangeDictionary[ParametersEnum.AttachmentStrokeWidth] = new Range(0.3 * _guideWidth, 0.5 * _guideWidth);
                 }
                 else
                 {
@@ -139,7 +139,7 @@ namespace Guide
                 if (Validator.ValidateRange(value, range.Min, range.Max))
                 {
                     _attachmentStrokeWidth = value;
-                    _rangeDictionary[ParametersEnum.AttachmentStrokeLength] = new Range(5 * _attachmentStrokeWidth, 135);
+                    _rangeDictionary[ParametersEnum.AttachmentStrokeLength] = new Range(5 * _attachmentStrokeWidth, 90);
                 }
                 else
                 {

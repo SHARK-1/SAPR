@@ -32,6 +32,7 @@ namespace GuideUI
         {
             _kompasConnector = new KompasConnector();
             _kompasConnector.ConnectToKompas();
+            Builder builder = new Builder(_kompasConnector,_guideParameters);
         }
 
         private void CheckAttachmentStrokeWidth()

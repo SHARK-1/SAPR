@@ -92,5 +92,11 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Guide\Guide.csproj">
+      <Project>{e5149441-57c5-43ea-86db-3a6484ff5106}</Project>
+      <Name>Guide</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

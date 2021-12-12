@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Guide
 {
+    /// <summary>
+    /// Перечисление параметров, используется в словаре максимальных и минимальных значений параметров
+    /// </summary>
     public enum ParametersEnum
     {
         GuideLength,

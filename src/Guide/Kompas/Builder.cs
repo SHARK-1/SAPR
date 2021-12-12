@@ -21,27 +21,37 @@ namespace Kompas
         private ksSketchDefinition _sketchDefinition;
         private ksEntity _currentPlan;
         private ksEntity _sketch;
+        /// <summary>
+        /// Конструктор для создания объекта Builder
+        /// </summary>
+        /// <param name="kompasConnector">Обект KompasConnector</param>
+        /// <param name="guideParameters">Параметры детали</param>
         public Builder(KompasConnector kompasConnector, GuideParameters guideParameters)
         {
             _kompasConnector = kompasConnector;
             _guideParameters = guideParameters;
             CreateDocument();
+            CreateGuide();
+            CreateHole();
         }
-
+        /// <summary>
+        /// Создание документы, в котором будет построена деталь
+        /// </summary>
         private void CreateDocument()
         {
             KompasObject Kompas = _kompasConnector.Kompas;
             _document3D = (ksDocument3D)Kompas.Document3D();
             _document3D.Create(false, true);
             _document2D = (ksDocument2D)Kompas.Document2D();
-            _part = (ksPart)_document3D.GetPart((int)Part_Type.pTop_Part); // новый компонент
-            CreateGuide();
-            CreateHole();
+            _part = (ksPart)_document3D.GetPart((int)Part_Type.pTop_Part);
         }
+        /// <summary>
+        /// Создание направляюще без отверстия для крепления к поверхности
+        /// </summary>
         private void CreateGuide()
         {
             KompasObject kompas = _kompasConnector.Kompas;
-            _currentPlan = (ksEntity)_part.GetDefaultEntity((short)Obj3dType.o3d_planeXOY); // 1-интерфейс на плоскость XOY
+            _currentPlan = (ksEntity)_part.GetDefaultEntity((short)Obj3dType.o3d_planeXOY);
             _sketch = (ksEntity)_part.NewEntity((short)Obj3dType.o3d_sketch);
             _sketchDefinition = (ksSketchDefinition)_sketch.GetDefinition();
             _sketchDefinition.SetPlane(_currentPlan);
@@ -191,6 +201,9 @@ namespace Kompas
             extrudeParameters.depthNormal = _guideParameters.GuideDepth;
             entityExtrude.Create();
         }
+        /// <summary>
+        /// Создание отверстия для крепления
+        /// </summary>
         private void CreateHole()
         {
             KompasObject kompas = _kompasConnector.Kompas;

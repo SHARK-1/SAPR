@@ -39,6 +39,10 @@ namespace Guide
             _rangeDictionary.Add(ParametersEnum.AttachmentStrokeLength, new Range(15, 90));
             _rangeDictionary.Add(ParametersEnum.AttachmentStrokeWidth, new Range(3, 5));
         }
+
+        /// <summary>
+        /// Свойство параметра длинны направляющей
+        /// </summary>
         public double GuideLength
         {
             get { return _guideLength; }
@@ -55,6 +59,9 @@ namespace Guide
                 }
             }
         }
+        /// <summary>
+        /// Свойство параметра ширины направляющей
+        /// </summary>
         public double GuideWidth
         {
             get { return _guideWidth; }
@@ -71,6 +78,9 @@ namespace Guide
                 }
             }
         }
+        /// <summary>
+        /// Свойство параметра толщины направляющей
+        /// </summary>
         public double GuideDepth
         {
             get { return _guideDepth; }
@@ -86,6 +96,9 @@ namespace Guide
                 }
             }
         }
+        /// <summary>
+        /// Свойство параметра угла наклона направляющей
+        /// </summary>
         public double GuideAngle
         {
             get { return _guideAngle; }
@@ -101,6 +114,9 @@ namespace Guide
                 }
             }
         }
+        /// <summary>
+        /// Свойство параметра диаметра отверстия для крепления к поверхности
+        /// </summary>
         public double HoleDiameter
         {
             get { return _holeDiameter; }
@@ -116,6 +132,9 @@ namespace Guide
                 }
             }
         }
+        /// <summary>
+        /// Свойство параметра длины хода направляещей
+        /// </summary>
         public double AttachmentStrokeLength
         {
             get { return _attachmentStrokeLength; }
@@ -131,6 +150,9 @@ namespace Guide
                 }
             }
         }
+        /// <summary>
+        /// Свойство параметра ширины хода направляещей
+        /// </summary>
         public double AttachmentStrokeWidth
         {
             get { return _attachmentStrokeWidth; }
@@ -147,7 +169,9 @@ namespace Guide
                 }
             }
         }
-
+        /// <summary>
+        /// Свойство для максимальных и минимальных значения параметров
+        /// </summary>
         public Dictionary<ParametersEnum, Range> RangeDictionary
         {
             get { return _rangeDictionary; }

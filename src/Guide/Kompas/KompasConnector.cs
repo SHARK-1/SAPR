@@ -7,12 +7,16 @@ namespace Kompas
     public class KompasConnector
     {
         private KompasObject _kompas;
-  
+        /// <summary>
+        /// Свойства для хранения подключения к компасу
+        /// </summary>
         public KompasObject Kompas
         { 
             get { return _kompas; }
         }
-
+        /// <summary>
+        /// Подключение к компасу
+        /// </summary>
         public void ConnectToKompas()
         {
             if (!GetActiveKompas(out var kompas))
@@ -28,6 +32,11 @@ namespace Kompas
             kompas.ActivateControllerAPI();
             _kompas = kompas;
         }
+        /// <summary>
+        /// Подключение к существующему экземпляру Компас-3D
+        /// </summary>
+        /// <param name="kompas">Ссылка на экземпляр КОМПАС-3D.</param>
+        /// <returns></returns>
         private bool GetActiveKompas(out KompasObject kompas)
         {
             kompas = null;

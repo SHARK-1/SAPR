@@ -11,6 +11,7 @@ using Guide;
 
 namespace Kompas
 {
+     //TODO: XML
     public class Builder
     {
         private KompasConnector _kompasConnector;
@@ -60,6 +61,7 @@ namespace Kompas
 
             double offset = _guideParameters.GuideWidth / 2;
             double[,] points = new double[4, 2] { { 0, 0 }, { 0, 0 }, { 0, 0 }, { 0, 0 } };
+            //TODO: toconst
             ksCON[] con = new ksCON[5]
             {
                 kompas.GetParamStruct(41),
@@ -80,7 +82,9 @@ namespace Kompas
             for (int i = 2; i < 4; i++)
             {
                 _document2D.ksMovePoint(ref points[i, 0], ref points[i, 1], 180 - _guideParameters.GuideAngle,
-                    _guideParameters.GuideWidth+_guideParameters.AttachmentStrokeLength+0.5*_guideParameters.AttachmentStrokeWidth);// сдвинуть точку но расстояние под углом к оси ох
+                    _guideParameters.GuideWidth
+                    + _guideParameters.AttachmentStrokeLength
+                    + 0.5*_guideParameters.AttachmentStrokeWidth);// сдвинуть точку но расстояние под углом к оси ох
             }
             var line= _document2D.ksLineSeg(0, 0, points[2,0],points[2,1], 6);
             ksMathematic2D ksmathematic=kompas.GetMathematic2D();
@@ -213,6 +217,7 @@ namespace Kompas
             _sketchDefinition.SetPlane(_currentPlan);
             _sketch.Create();
             _document2D = (ksDocument2D)_sketchDefinition.BeginEdit();
+            //TODO: toconst
             double[,] points = new double[5, 2] {
                 { -_guideParameters.GuideLength, 0 },
                 { -_guideParameters.GuideLength, +5+0.75*_guideParameters.HoleDiameter },

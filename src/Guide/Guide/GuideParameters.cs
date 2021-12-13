@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Guide
 {
-
+     //TODO: XML
     public class GuideParameters
     {
         private double _guideLength;
@@ -16,7 +16,8 @@ namespace Guide
         private double _holeDiameter;
         private double _attachmentStrokeLength;
         private double _attachmentStrokeWidth;
-        private Dictionary<ParametersEnum, Range> _rangeDictionary;
+
+        private readonly Dictionary<ParametersEnum, Range> _rangeDictionary;
         
         /// <summary>
         /// Создание экземпляра GuideParameters c значениями по умолчанию.
@@ -30,14 +31,16 @@ namespace Guide
             _holeDiameter = 2;
             _attachmentStrokeLength = 15;
             _attachmentStrokeWidth = 3;
-            _rangeDictionary = new Dictionary<ParametersEnum, Range>();
-            _rangeDictionary.Add(ParametersEnum.GuideLength, new Range(50, 150));
-            _rangeDictionary.Add(ParametersEnum.GuideWidth, new Range(10, 30));
-            _rangeDictionary.Add(ParametersEnum.GuideDepth, new Range(5, 20));
-            _rangeDictionary.Add(ParametersEnum.GuideAngle, new Range(65, 270));
-            _rangeDictionary.Add(ParametersEnum.HoleDiameter, new Range(2, 20));
-            _rangeDictionary.Add(ParametersEnum.AttachmentStrokeLength, new Range(15, 90));
-            _rangeDictionary.Add(ParametersEnum.AttachmentStrokeWidth, new Range(3, 5));
+            _rangeDictionary = new Dictionary<ParametersEnum, Range>
+            {
+                { ParametersEnum.GuideLength, new Range(50, 150) },
+                { ParametersEnum.GuideWidth, new Range(10, 30) },
+                { ParametersEnum.GuideDepth, new Range(5, 20) },
+                { ParametersEnum.GuideAngle, new Range(65, 270) },
+                { ParametersEnum.HoleDiameter, new Range(2, 20) },
+                { ParametersEnum.AttachmentStrokeLength, new Range(15, 90) },
+                { ParametersEnum.AttachmentStrokeWidth, new Range(3, 5) }
+            };
         }
 
         /// <summary>
@@ -69,6 +72,7 @@ namespace Guide
                 Range range = _rangeDictionary[ParametersEnum.GuideWidth];
                 if (Validator.ValidateRange(value, range.Min, range.Max))
                 {
+                        //TODO: RSDN
                     _guideWidth = value;
                     _rangeDictionary[ParametersEnum.AttachmentStrokeWidth] = new Range(0.3 * _guideWidth, 0.5 * _guideWidth);
                 }
@@ -169,13 +173,10 @@ namespace Guide
                 }
             }
         }
+
         /// <summary>
         /// Свойство для максимальных и минимальных значения параметров
         /// </summary>
-        public Dictionary<ParametersEnum, Range> RangeDictionary
-        {
-            get { return _rangeDictionary; }
-            set { }
-        }
+        public Dictionary<ParametersEnum, Range> RangeDictionary => _rangeDictionary;
     }
 }

@@ -17,8 +17,7 @@ namespace Guide
         /// <returns></returns>
         public static bool ValidateRange(double value, double min,double max)
         {
-            if (value >= min && value <= max) return true;
-            else return false;
+            return (value >= min && value <= max);
         }
     }
 }

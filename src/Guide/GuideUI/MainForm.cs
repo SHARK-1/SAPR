@@ -36,6 +36,7 @@ namespace GuideUI
             Builder builder = new Builder(_kompasConnector,_guideParameters);
         }
 
+        //TODO: Дубли
         private void CheckAttachmentStrokeWidth()
         {
             try
@@ -53,6 +54,7 @@ namespace GuideUI
             }
         }
 
+        //TODO: Дубли
         private void CheckAttachmentStrokeLength()
         {
             try
@@ -67,6 +69,7 @@ namespace GuideUI
             }
         }
 
+        //TODO: Дубли
         private void GuideLengthTextBox_Leave(object sender, EventArgs e)
         {
             try
@@ -84,6 +87,7 @@ namespace GuideUI
 
         }
 
+        //TODO: Дубли
         private void GuideWidthTextBox_Leave(object sender, EventArgs e)
         {
             try
@@ -115,6 +119,7 @@ namespace GuideUI
             ValidateAllValues();
         }
 
+        //TODO: Дубли
         private void GuideDepthTextBox_Leave(object sender, EventArgs e)
         {
             try
@@ -130,6 +135,7 @@ namespace GuideUI
             ValidateAllValues();
         }
 
+        //TODO: Дубли
         private void HoleDiameterTextBox_Leave(object sender, EventArgs e)
         {
             try
@@ -145,6 +151,7 @@ namespace GuideUI
             ValidateAllValues();
         }
 
+        //TODO: Дубли
         private void GuideAngleTextBox_Leave(object sender, EventArgs e)
         {
             try
@@ -164,6 +171,7 @@ namespace GuideUI
         {
             try
             {
+
                 if (Validator.ValidateRange(double.Parse(GuideLengthTextBox.Text),
                     _guideParameters.RangeDictionary[ParametersEnum.GuideLength].Min,
                     _guideParameters.RangeDictionary[ParametersEnum.GuideLength].Max)

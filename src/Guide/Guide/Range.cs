@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace Guide
 {
+        //TODO: RSDN
     public struct Range
     {
+         //TODO: XML
+         //TODO: на свойства
         public double Min;
         public double Max;
         /// <summary>

@@ -14,7 +14,8 @@ using System.Runtime.InteropServices;
 using Kompas;
 using Guide;
 
-//TODO: Заменить валидацыю на запись в параметры. уточнить
+//TODO: Заменить валидацию на запись в параметры. уточнить
+//Проверка всех значений после каждого ввода, может сделать буллевый массив(или инной метод)?
 namespace GuideUI
 {
     public partial class MainForm : Form

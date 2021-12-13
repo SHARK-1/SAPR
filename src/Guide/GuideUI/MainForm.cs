@@ -14,7 +14,7 @@ using System.Runtime.InteropServices;
 using Kompas;
 using Guide;
 
-
+//TODO: Заменить валидацыю на запись в параметры. уточнить
 namespace GuideUI
 {
     public partial class MainForm : Form

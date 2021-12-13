@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Guide", "Guide\Guide.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kompas", "Kompas\Kompas.csproj", "{F204DC9E-C71F-4FBE-95C2-5BB18733E29D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Guide.UnitTests", "Guide.UnitTests\Guide.UnitTests.csproj", "{36424ED1-9F58-461E-B147-1DA24504D62A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{F204DC9E-C71F-4FBE-95C2-5BB18733E29D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F204DC9E-C71F-4FBE-95C2-5BB18733E29D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F204DC9E-C71F-4FBE-95C2-5BB18733E29D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36424ED1-9F58-461E-B147-1DA24504D62A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36424ED1-9F58-461E-B147-1DA24504D62A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36424ED1-9F58-461E-B147-1DA24504D62A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36424ED1-9F58-461E-B147-1DA24504D62A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

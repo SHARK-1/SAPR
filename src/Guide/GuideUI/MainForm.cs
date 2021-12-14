@@ -1,18 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Kompas6API5;
-using KompasAPI7;
-using Kompas6Constants3D;
-using System.Runtime.InteropServices;
 using Kompas;
 using Guide;
+using System.Reflection;
 
 //TODO: Заменить валидацию на запись в параметры. уточнить
 //Проверка всех значений после каждого ввода, может сделать буллевый массив(или инной метод)?
@@ -83,8 +74,6 @@ namespace GuideUI
                 GuideLengthTextBox.BackColor = Color.Pink;
             }
             ValidateAllValues();
-
-
         }
 
         //TODO: Дубли
@@ -119,35 +108,58 @@ namespace GuideUI
             ValidateAllValues();
         }
 
-        //TODO: Дубли
-        private void GuideDepthTextBox_Leave(object sender, EventArgs e)
+
+        private void CheckTextBox(TextBox textBox, ParametersEnum parametersEnum)
         {
             try
             {
-                double guideDepth = double.Parse(GuideDepthTextBox.Text);
-                _guideParameters.GuideDepth = guideDepth;
-                GuideDepthTextBox.BackColor = Color.White;
+                double value = double.Parse(textBox.Text);
+
+                var propertyInfo = typeof(GuideParameters).
+                    GetProperty(parametersEnum.ToString());
+                propertyInfo.SetValue(_guideParameters, value);
+                textBox.BackColor = Color.White;
             }
-            catch
+            catch (Exception exception)
             {
-                GuideDepthTextBox.BackColor = Color.Pink;
+                    textBox.BackColor = Color.Pink;
             }
-            ValidateAllValues();
+        }
+        //TODO: Дубли
+        private void GuideDepthTextBox_Leave(object sender, EventArgs e)
+        {
+            CheckTextBox((TextBox)sender, ParametersEnum.GuideDepth);
+            //TextBox textbox = (TextBox)sender;
+            //try
+            //{
+            //    double value = double.Parse(textbox.Text);
+
+            //    var propertyInfo = typeof(GuideParameters).
+            //        GetProperty(ParametersEnum.GuideDepth.ToString());
+            //    propertyInfo.SetValue(_guideParameters, value);
+            //    textbox.BackColor = Color.White;
+            //}
+            //catch (Exception)
+            //{
+            //    textbox.BackColor = Color.Pink;
+            //}
+            //ValidateAllValues();
         }
 
         //TODO: Дубли
         private void HoleDiameterTextBox_Leave(object sender, EventArgs e)
         {
-            try
-            {
-                double holdeDiameter = double.Parse(HoleDiameterTextBox.Text);
-                _guideParameters.HoleDiameter = holdeDiameter;
-                HoleDiameterTextBox.BackColor = Color.White;
-            }
-            catch
-            {
-                HoleDiameterTextBox.BackColor = Color.Pink;
-            }
+            CheckTextBox((TextBox)sender, ParametersEnum.HoleDiameter);
+            //try
+            //{
+            //    double holdeDiameter = double.Parse(HoleDiameterTextBox.Text);
+            //    _guideParameters.HoleDiameter = holdeDiameter;
+            //    HoleDiameterTextBox.BackColor = Color.White;
+            //}
+            //catch
+            //{
+            //    HoleDiameterTextBox.BackColor = Color.Pink;
+            //}
             ValidateAllValues();
         }
 

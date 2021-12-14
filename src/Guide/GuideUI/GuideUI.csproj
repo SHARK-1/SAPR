@@ -85,9 +85,9 @@
       <Project>{e5149441-57c5-43ea-86db-3a6484ff5106}</Project>
       <Name>Guide</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Kompas\Kompas.csproj">
+    <ProjectReference Include="..\Kompas\KompasAPI.csproj">
       <Project>{f204dc9e-c71f-4fbe-95c2-5bb18733e29d}</Project>
-      <Name>Kompas</Name>
+      <Name>KompasAPI</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

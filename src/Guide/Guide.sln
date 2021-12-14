@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuideUI", "GuideUI\GuideUI.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Guide", "Guide\Guide.csproj", "{E5149441-57C5-43EA-86DB-3A6484FF5106}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kompas", "Kompas\Kompas.csproj", "{F204DC9E-C71F-4FBE-95C2-5BB18733E29D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KompasAPI", "Kompas\KompasAPI.csproj", "{F204DC9E-C71F-4FBE-95C2-5BB18733E29D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Guide.UnitTests", "Guide.UnitTests\Guide.UnitTests.csproj", "{36424ED1-9F58-461E-B147-1DA24504D62A}"
 EndProject

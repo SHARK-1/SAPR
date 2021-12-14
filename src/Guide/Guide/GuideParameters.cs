@@ -78,7 +78,7 @@ namespace Guide
                 }
                 else
                 {
-                    throw new Exception("Значение выходит за пределы допустимых значений");
+                    throw new ArgumentException("Значение выходит за пределы допустимых значений");
                 }
             }
         }
@@ -96,7 +96,7 @@ namespace Guide
                 }
                 else
                 {
-                    throw new Exception("Значение выходит за пределы допустимых значений");
+                    throw new ArgumentException("Значение выходит за пределы допустимых значений");
                 }
             }
         }

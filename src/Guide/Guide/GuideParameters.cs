@@ -7,16 +7,42 @@ using System.Threading.Tasks;
 namespace Guide
 {
      //TODO: XML
+     /// <summary>
+     /// Класс хранящий параметры направляющей
+     /// </summary>
     public class GuideParameters
     {
+        /// <summary>
+        /// Длинна направляющей
+        /// </summary>
         private double _guideLength;
+        /// <summary>
+        /// Ширина направляющей
+        /// </summary>
         private double _guideWidth;
+        /// <summary>
+        /// Толщина направляющей
+        /// </summary>
         private double _guideDepth;
+        /// <summary>
+        /// Угол наклона направляющей
+        /// </summary>
         private double _guideAngle;
+        /// <summary>
+        /// Диаметр отверстия
+        /// </summary>
         private double _holeDiameter;
+        /// <summary>
+        /// Длина ходя крепления
+        /// </summary>
         private double _attachmentStrokeLength;
+        /// <summary>
+        /// Ширина ходя крепления
+        /// </summary>
         private double _attachmentStrokeWidth;
-
+        /// <summary>
+        /// Словарь хранящий минимальные и максимальные значения параметров
+        /// </summary>
         private readonly Dictionary<ParametersEnum, Range> _rangeDictionary;
         
         /// <summary>
@@ -74,7 +100,8 @@ namespace Guide
                 {
                         //TODO: RSDN
                     _guideWidth = value;
-                    _rangeDictionary[ParametersEnum.AttachmentStrokeWidth] = new Range(0.3 * _guideWidth, 0.5 * _guideWidth);
+                    _rangeDictionary[ParametersEnum.AttachmentStrokeWidth] =
+                        new Range(0.3 * _guideWidth, 0.5 * _guideWidth);
                 }
                 else
                 {

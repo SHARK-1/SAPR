@@ -12,21 +12,48 @@ using Guide;
 namespace Kompas
 {
      //TODO: XML
+     /// <summary>
+     /// Класс, строящий деталь в компас-3D
+     /// </summary>
     public class Builder
     {
+        /// <summary>
+        /// Экцемляр класса KompasConnector
+        /// </summary>
         private KompasConnector _kompasConnector;
+        /// <summary>
+        /// Экцемляр класса GuideParameters
+        /// </summary>
         private GuideParameters _guideParameters;
+        /// <summary>
+        /// Интерфейс документа-модели.
+        /// </summary>
         private ksDocument3D _document3D;
+        /// <summary>
+        /// Интерфейс графического документа системы КОМПАС
+        /// </summary>
         private ksDocument2D _document2D;
+        /// <summary>
+        /// Интерфейс детали или подсборки в составе сборки
+        /// </summary>
         private ksPart _part;
+        /// <summary>
+        /// Интерфейс параметров эскиза.
+        /// </summary>
         private ksSketchDefinition _sketchDefinition;
+        /// <summary>
+        /// Указатель на интерфейс плоскости
+        /// </summary>
         private ksEntity _currentPlan;
+        /// <summary>
+        /// Интерфейс макроэлемента документа-модели
+        /// </summary>
         private ksEntity _sketch;
         /// <summary>
         /// Номер структуры хранящий центр оружности и две точки касания с прямыми
         /// </summary>
         private const int CON_STRUCT_TYPE = 41;
-        private const double HOLE_RESERVE = 5;
+
         /// <summary>
         /// Конструктор для создания объекта Builder
         /// </summary>
@@ -220,6 +247,9 @@ namespace Kompas
             extrudeParameters.depthNormal = _guideParameters.GuideDepth;
             entityExtrude.Create();
         }
+        /// <summary>
+        /// Выдавливание из модели отвестия для хода направляющей
+        /// </summary>
         private void CutAttachmentStroke()
         {
             KompasObject kompas = _kompasConnector.Kompas;

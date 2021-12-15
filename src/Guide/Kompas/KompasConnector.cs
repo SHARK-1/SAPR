@@ -4,8 +4,14 @@ using Kompas6API5;
 
 namespace Kompas
 {
+    /// <summary>
+    /// Класс, хранящий указатель на Компаc-3D
+    /// </summary>
     public class KompasConnector
     {
+        /// <summary>
+        /// Указатель на Компаc-3D
+        /// </summary>
         private KompasObject _kompas;
         /// <summary>
         /// Свойства для хранения подключения к компасу

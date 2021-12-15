@@ -11,6 +11,7 @@ namespace Guide
     /// </summary>
     public enum ParametersEnum
     {
+        None,
         GuideLength,
         GuideWidth,
         GuideDepth,

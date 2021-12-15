@@ -3,21 +3,39 @@ using System.Drawing;
 using System.Windows.Forms;
 using Kompas;
 using Guide;
-using System.Reflection;
+using System.Collections.Generic;
 
-//TODO: Заменить валидацию на запись в параметры. уточнить
-//Проверка всех значений после каждого ввода, может сделать буллевый массив(или инной метод)?
+
 namespace GuideUI
 {
     public partial class MainForm : Form
     {
         KompasConnector _kompasConnector;
         GuideParameters _guideParameters;
+        /// <summary>
+        /// Словарь для хранения элеменов Label, 
+        /// с записями максимальных и минимальных значений
+        /// </summary>
+        private readonly Dictionary<ParametersEnum, Label> _labelDictionary;
+        /// <summary>
+        /// Словарь для хранения элеменов TextBox, с зависимыми парапетрами
+        /// </summary>
+        private readonly Dictionary<ParametersEnum, TextBox> _textBoxDictionary;
         public MainForm()
         {
             InitializeComponent();
             _guideParameters = new GuideParameters();
             ValidateAllValues();
+            _labelDictionary = new Dictionary<ParametersEnum, Label>
+            {
+                { ParametersEnum.AttachmentStrokeLength, AttachmentStrokeLengthLabel },
+                { ParametersEnum.AttachmentStrokeWidth, AttachmentStrokeWidthLabel }
+            };
+            _textBoxDictionary= new Dictionary<ParametersEnum, TextBox>
+                            {
+                { ParametersEnum.AttachmentStrokeLength, AttachmentStrokeLengthTextBox },
+                { ParametersEnum.AttachmentStrokeWidth, AttachmentStrokeWidthTextBox }
+            };
         }
 
         private void BuildButton_Click(object sender, EventArgs e)
@@ -27,164 +45,88 @@ namespace GuideUI
             Builder builder = new Builder(_kompasConnector,_guideParameters);
         }
 
-        //TODO: Дубли
-        private void CheckAttachmentStrokeWidth()
+        /// <summary>
+        /// Заносится значение из TextBox в GuideParameters по имени
+        /// </summary>
+        /// <param name="textBox">TextBox из которого берется значение</param>
+        /// <param name="basicParameter">Имя свойства из GuideParameters</param>
+        /// <param name="dependedParameter">Имя зависимого свойства из GuideParameters</param>
+        private void CheckValueInTextBox(
+            TextBox textBox,
+            ParametersEnum basicParameter,
+            ParametersEnum dependedParameter=ParametersEnum.None)
         {
             try
             {
-                double attachmentStrokeWidth = double.Parse(AttachmentStrokeWidthTextBox.Text);
-                _guideParameters.AttachmentStrokeWidth = attachmentStrokeWidth;
-                AttachmentStrokeWidthTextBox.BackColor = Color.White;
-                Range range = _guideParameters.RangeDictionary[ParametersEnum.AttachmentStrokeLength];
-                AttachmentStrokeLengthLabel.Text = $"({range.Min} - {range.Max} мм)";
-                CheckAttachmentStrokeLength();
+                double value = double.Parse(textBox.Text);
+                var propertyInfo = typeof(GuideParameters).
+                    GetProperty(basicParameter.ToString());
+                propertyInfo.SetValue(_guideParameters, value);
+                textBox.BackColor = Color.White;
+                if (dependedParameter!=ParametersEnum.None)
+                {
+                    Range range = _guideParameters.RangeDictionary[dependedParameter];
+                    _labelDictionary[dependedParameter].Text= $"({range.Min} - {range.Max} мм)";
+                    CheckValueInTextBox(_textBoxDictionary[dependedParameter], dependedParameter);
+                }
             }
             catch
             {
-                AttachmentStrokeWidthTextBox.BackColor = Color.Pink;
-            }
-        }
-
-        //TODO: Дубли
-        private void CheckAttachmentStrokeLength()
-        {
-            try
-            {
-                double attachmentStrokeLength = double.Parse(AttachmentStrokeLengthTextBox.Text);
-                _guideParameters.AttachmentStrokeLength = attachmentStrokeLength;
-                AttachmentStrokeLengthTextBox.BackColor = Color.White;
-            }
-            catch
-            {
-                AttachmentStrokeLengthTextBox.BackColor = Color.Pink;
+                textBox.BackColor = Color.Pink;
             }
         }
 
         //TODO: Дубли
         private void GuideLengthTextBox_Leave(object sender, EventArgs e)
         {
-            try
-            {
-                double guideLength = double.Parse(GuideLengthTextBox.Text);
-                _guideParameters.GuideLength = guideLength;
-                GuideLengthTextBox.BackColor = Color.White;
-            }
-            catch
-            {
-                GuideLengthTextBox.BackColor = Color.Pink;
-            }
+            CheckValueInTextBox((TextBox)sender,ParametersEnum.GuideLength);
             ValidateAllValues();
         }
 
         //TODO: Дубли
         private void GuideWidthTextBox_Leave(object sender, EventArgs e)
         {
-            try
-            {
-                double guideWidth = double.Parse(GuideWidthTextBox.Text);
-                _guideParameters.GuideWidth = guideWidth;
-                GuideWidthTextBox.BackColor = Color.White;
-                Range range = _guideParameters.RangeDictionary[ParametersEnum.AttachmentStrokeWidth];
-                AttachmentStrokeWidthLabel.Text = $"({range.Min} - {range.Max} мм)";
-                CheckAttachmentStrokeWidth();
-            }
-            catch
-            {
-                GuideWidthTextBox.BackColor = Color.Pink;
-            }
-
+            CheckValueInTextBox((TextBox)sender, ParametersEnum.GuideWidth, ParametersEnum.AttachmentStrokeWidth);
             ValidateAllValues();
         }
 
         private void AttachmentStrokeWidthTextBox_Leave(object sender, EventArgs e)
         {
-            CheckAttachmentStrokeWidth();
+            CheckValueInTextBox((TextBox)sender, ParametersEnum.AttachmentStrokeWidth, ParametersEnum.AttachmentStrokeLength);
             ValidateAllValues();
         }
 
         private void AttachmentStrokeLengthTextBox_Leave(object sender, EventArgs e)
         {
-            CheckAttachmentStrokeLength();
+            CheckValueInTextBox((TextBox)sender, ParametersEnum.AttachmentStrokeLength);
             ValidateAllValues();
         }
 
-
-        private void CheckTextBox(TextBox textBox, ParametersEnum parametersEnum)
-        {
-            try
-            {
-                double value = double.Parse(textBox.Text);
-
-                var propertyInfo = typeof(GuideParameters).
-                    GetProperty(parametersEnum.ToString());
-                propertyInfo.SetValue(_guideParameters, value);
-                textBox.BackColor = Color.White;
-            }
-            catch (Exception exception)
-            {
-                    textBox.BackColor = Color.Pink;
-            }
-        }
         //TODO: Дубли
         private void GuideDepthTextBox_Leave(object sender, EventArgs e)
         {
-            CheckTextBox((TextBox)sender, ParametersEnum.GuideDepth);
-            //TextBox textbox = (TextBox)sender;
-            //try
-            //{
-            //    double value = double.Parse(textbox.Text);
-
-            //    var propertyInfo = typeof(GuideParameters).
-            //        GetProperty(ParametersEnum.GuideDepth.ToString());
-            //    propertyInfo.SetValue(_guideParameters, value);
-            //    textbox.BackColor = Color.White;
-            //}
-            //catch (Exception)
-            //{
-            //    textbox.BackColor = Color.Pink;
-            //}
-            //ValidateAllValues();
+            CheckValueInTextBox((TextBox)sender, ParametersEnum.GuideDepth);
+            ValidateAllValues();
         }
 
         //TODO: Дубли
         private void HoleDiameterTextBox_Leave(object sender, EventArgs e)
         {
-            CheckTextBox((TextBox)sender, ParametersEnum.HoleDiameter);
-            //try
-            //{
-            //    double holdeDiameter = double.Parse(HoleDiameterTextBox.Text);
-            //    _guideParameters.HoleDiameter = holdeDiameter;
-            //    HoleDiameterTextBox.BackColor = Color.White;
-            //}
-            //catch
-            //{
-            //    HoleDiameterTextBox.BackColor = Color.Pink;
-            //}
+            CheckValueInTextBox((TextBox)sender, ParametersEnum.HoleDiameter);
             ValidateAllValues();
         }
 
         //TODO: Дубли
         private void GuideAngleTextBox_Leave(object sender, EventArgs e)
         {
-            try
-            {
-                double guideAngle = double.Parse(GuideAngleTextBox.Text);
-                _guideParameters.GuideAngle = guideAngle;
-                GuideAngleTextBox.BackColor = Color.White;
-            }
-            catch
-            {
-                GuideAngleTextBox.BackColor = Color.Pink;
-            }
+            CheckValueInTextBox((TextBox)sender, ParametersEnum.GuideAngle);
             ValidateAllValues();
         }
 
         private void ValidateAllValues()
         {
             try
-            {
-
-                if (Validator.ValidateRange(double.Parse(GuideLengthTextBox.Text),
+            {if (Validator.ValidateRange(double.Parse(GuideLengthTextBox.Text),
                     _guideParameters.RangeDictionary[ParametersEnum.GuideLength].Min,
                     _guideParameters.RangeDictionary[ParametersEnum.GuideLength].Max)
                     &&

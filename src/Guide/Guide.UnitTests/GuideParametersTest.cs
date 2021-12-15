@@ -12,6 +12,8 @@ namespace Guide.UnitTests
 
     public class GuideParametersTest
     {
+        //TODO: https://docs.nunit.org/articles/nunit/writing-tests/attributes/testcase.html
+
         public void NegativeTest(ParametersEnum parametersEnum, double value)
         {
             //Arrange
@@ -27,6 +29,7 @@ namespace Guide.UnitTests
                 propertyInfo.SetValue(parameter, value);
             });
         }
+
         public void PositiveTest(ParametersEnum parametersEnum, double value)
         {
             //Arrange

@@ -11,8 +11,8 @@ namespace Guide
     {
          //TODO: XML
          //TODO: на свойства
-        public double Min;
-        public double Max;
+        private double _min;
+        private double _max;
         /// <summary>
         /// Конструктор, задающий минимальное и максимальное значение
         /// </summary>
@@ -20,8 +20,17 @@ namespace Guide
         /// <param name="max">Максимальное значение</param>
         public Range(double min, double max)
         {
-            Min = min;
-            Max = max;
+            _min = min;
+            _max = max;
+        }
+        public double Min{
+            get { return _min; }
+            set { _min = value; } 
+        }
+        public double Max
+        {
+            get { return _max; }
+            set { _max = value; }
         }
 
     }

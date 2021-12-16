@@ -94,11 +94,11 @@ namespace Guide
         public double GuideWidth
         {
             get { return _guideWidth; }
-            set {
+            set 
+            {
                 Range range = _rangeDictionary[ParametersEnum.GuideWidth];
                 if (Validator.ValidateRange(value, range.Min, range.Max))
                 {
-                        //TODO: RSDN
                     _guideWidth = value;
                     _rangeDictionary[ParametersEnum.AttachmentStrokeWidth] =
                         new Range(0.3 * _guideWidth, 0.5 * _guideWidth);

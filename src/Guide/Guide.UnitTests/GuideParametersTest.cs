@@ -13,7 +13,7 @@ namespace Guide.UnitTests
         [TestCase(ParametersEnum.AttachmentStrokeWidth, 4, TestName = "Ширина хода крепления, позитив")]
         [TestCase(ParametersEnum.HoleDiameter, 3, TestName = "Диаметр отверстия, позитив")]
         [TestCase(ParametersEnum.GuideAngle, 100, TestName = "Угол наклона направляющей, позитив")]
-        public void PositiveTest(ParametersEnum parametersEnum, double value)
+        public void TestSet_CorrectValue(ParametersEnum parametersEnum, double value)
         {
             //Arrange
             var expectedValue = value;
@@ -41,7 +41,7 @@ namespace Guide.UnitTests
         [TestCase(ParametersEnum.HoleDiameter, 60, TestName = "Диаметр отверстия, больше положенного, исключение")]
         [TestCase(ParametersEnum.GuideAngle, 60, TestName = "Угол наклона направляющей, меньше положенного, исключение")]
         [TestCase(ParametersEnum.GuideAngle, 300, TestName = "Угол наклона направляющей, больше положенного, исключение")]
-        public void NegativeTest(ParametersEnum parametersEnum, double value)
+        public void TestSet_IncorrectValue(ParametersEnum parametersEnum, double value)
         {
             //Arrange
             var expectedValue = value;
@@ -62,7 +62,7 @@ namespace Guide.UnitTests
         /// <param name="maxBorder">True-Максимальное, False- Минимальное</param>
         [TestCase(true, TestName = "Максимальное значение параметра AttachmentStrokeWidth")]
         [TestCase(false, TestName = "Минимальное значение параметра AttachmentStrokeWidth")]
-        public void CheckDiapozon_AttachmentStrokeWidth(bool isMaxBorder)
+        public void TestDiapozon_AttachmentStrokeWidth(bool isMaxBorder)
         {
             double guideWidth = 20;
             //Arrange
@@ -83,7 +83,7 @@ namespace Guide.UnitTests
             }
         }
         [TestCase(TestName = "Минимальное значение параметра AttachmentStrokeLenght")]
-        public void CheckDiapozon_AttachmentStrokeLenght()
+        public void TestDiapozon_AttachmentStrokeLenght()
         {
             double attachmentStrokeWidth = 5;
             //Arrange

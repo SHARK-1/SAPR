@@ -6,7 +6,7 @@ namespace Guide.UnitTests
     {
         [TestCase(true, TestName = "Конструктор, максимальное значение")]
         [TestCase(false, TestName = "Конструктор, минимальное значение")]
-        public void RangeConstructor_Test(bool isMaxBorder)
+        public void TestConstructor_Range(bool isMaxBorder)
         {
             //Arrange
             var expectedValue = isMaxBorder?20:12;
@@ -26,7 +26,7 @@ namespace Guide.UnitTests
         }
         [TestCase(true, TestName = "Максимальное значение")]
         [TestCase(false, TestName = "Минимальное значение")]
-        public void RangeMinMax_Test(bool isMaxBorder)
+        public void TestSet_RangeMinMax(bool isMaxBorder)
         {
             //Arrange
             var expectedValue = isMaxBorder ? 20 : 12;

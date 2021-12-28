@@ -27,6 +27,7 @@ namespace Guide.UnitTests
             //Assert
             Assert.AreEqual(expectedValue, propertyInfo.GetValue(parameter));
         }
+
         [TestCase(ParametersEnum.GuideLength, 30, TestName = "Длинна направляющей, меньше положенного, исключение")]
         [TestCase(ParametersEnum.GuideLength, 160, TestName = "Длинна направляющей, больше положенного, исключение")]
         [TestCase(ParametersEnum.GuideWidth, 5, TestName = "Ширина направляющей, меньше положенного, исключение")]
@@ -73,15 +74,12 @@ namespace Guide.UnitTests
             parameter.GuideWidth = guideWidth;
 
             //Assert
-            if (isMaxBorder)
-            {
-                Assert.AreEqual(expectedValue, parameter.RangeDictionary[ParametersEnum.AttachmentStrokeWidth].Max);
-            }
-            else
-            {
-                Assert.AreEqual(expectedValue, parameter.RangeDictionary[ParametersEnum.AttachmentStrokeWidth].Min);
-            }
+            var assertedValue = isMaxBorder
+                ? parameter.RangeDictionary[ParametersEnum.AttachmentStrokeWidth].Max
+                : parameter.RangeDictionary[ParametersEnum.AttachmentStrokeWidth].Min;
+            Assert.AreEqual(expectedValue, assertedValue);
         }
+
         [TestCase(TestName = "Минимальное значение параметра AttachmentStrokeLenght")]
         public void TestDiapozon_AttachmentStrokeLenght()
         {

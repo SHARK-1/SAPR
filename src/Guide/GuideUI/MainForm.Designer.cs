@@ -140,7 +140,7 @@ namespace GuideUI
             // 
             // BuildButton
             // 
-            this.BuildButton.Location = new System.Drawing.Point(256, 230);
+            this.BuildButton.Location = new System.Drawing.Point(745, 228);
             this.BuildButton.Name = "BuildButton";
             this.BuildButton.Size = new System.Drawing.Size(93, 30);
             this.BuildButton.TabIndex = 7;
@@ -293,7 +293,7 @@ namespace GuideUI
             this.pictureBox1.Image = global::GuideUI.Properties.Resources._1;
             this.pictureBox1.Location = new System.Drawing.Point(501, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(340, 250);
+            this.pictureBox1.Size = new System.Drawing.Size(337, 220);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 15;
             this.pictureBox1.TabStop = false;
@@ -326,6 +326,8 @@ namespace GuideUI
             this.Controls.Add(this.GuideDepthTextBox);
             this.Controls.Add(this.GuideWidthTextBox);
             this.Controls.Add(this.GuideLengthTextBox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Text = "Направляющая";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

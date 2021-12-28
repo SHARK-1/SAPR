@@ -10,6 +10,9 @@ namespace GuideUI
 {
     public partial class MainForm : Form
     {
+        /// <summary>
+        /// Объект холнящий подключение к компасу
+        /// </summary>
         KompasConnector _kompasConnector;
         GuideParameters _guideParameters;
         /// <summary>
@@ -126,37 +129,16 @@ namespace GuideUI
         private void ValidateAllValues()
         {
             try
-            {if (Validator.ValidateRange(double.Parse(GuideLengthTextBox.Text),
-                    _guideParameters.RangeDictionary[ParametersEnum.GuideLength].Min,
-                    _guideParameters.RangeDictionary[ParametersEnum.GuideLength].Max)
-                    &&
-                    Validator.ValidateRange(double.Parse(GuideWidthTextBox.Text),
-                    _guideParameters.RangeDictionary[ParametersEnum.GuideWidth].Min,
-                    _guideParameters.RangeDictionary[ParametersEnum.GuideWidth].Max)
-                     &&
-                    Validator.ValidateRange(double.Parse(GuideDepthTextBox.Text),
-                    _guideParameters.RangeDictionary[ParametersEnum.GuideDepth].Min,
-                    _guideParameters.RangeDictionary[ParametersEnum.GuideDepth].Max)
-                    &&
-                    Validator.ValidateRange(double.Parse(GuideAngleTextBox.Text),
-                    _guideParameters.RangeDictionary[ParametersEnum.GuideAngle].Min,
-                    _guideParameters.RangeDictionary[ParametersEnum.GuideAngle].Max)
-                    &&
-                    Validator.ValidateRange(double.Parse(HoleDiameterTextBox.Text),
-                    _guideParameters.RangeDictionary[ParametersEnum.HoleDiameter].Min,
-                    _guideParameters.RangeDictionary[ParametersEnum.HoleDiameter].Max)
-                    &&
-                    Validator.ValidateRange(double.Parse(AttachmentStrokeLengthTextBox.Text),
-                    _guideParameters.RangeDictionary[ParametersEnum.AttachmentStrokeLength].Min,
-                    _guideParameters.RangeDictionary[ParametersEnum.AttachmentStrokeLength].Max)
-                    &&
-                    Validator.ValidateRange(double.Parse(AttachmentStrokeWidthTextBox.Text),
-                    _guideParameters.RangeDictionary[ParametersEnum.AttachmentStrokeWidth].Min,
-                    _guideParameters.RangeDictionary[ParametersEnum.AttachmentStrokeWidth].Max)
-                    )
-                    BuildButton.Enabled = true;
-
-                else BuildButton.Enabled = false;
+            {
+                GuideParameters checkParameters=new GuideParameters();
+                checkParameters.GuideLength = double.Parse(GuideLengthTextBox.Text);
+                checkParameters.GuideWidth = double.Parse(GuideWidthTextBox.Text);
+                checkParameters.GuideDepth = double.Parse(GuideDepthTextBox.Text);
+                checkParameters.AttachmentStrokeLength = double.Parse(AttachmentStrokeLengthTextBox.Text);
+                checkParameters.AttachmentStrokeWidth = double.Parse(AttachmentStrokeWidthTextBox.Text);
+                checkParameters.HoleDiameter = double.Parse(HoleDiameterTextBox.Text);
+                checkParameters.GuideAngle = double.Parse(GuideAngleTextBox.Text);
+                BuildButton.Enabled = true;
             }
             catch
             {

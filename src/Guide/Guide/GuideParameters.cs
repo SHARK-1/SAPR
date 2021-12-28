@@ -84,7 +84,7 @@ namespace Guide
                 }
                 else
                 {
-                    throw new Exception("Значение выходит за пределы допустимых значений");
+                    CallException(value, range.Min, range.Max);
                 }
             }
         }
@@ -105,7 +105,7 @@ namespace Guide
                 }
                 else
                 {
-                    throw new ArgumentException("Значение выходит за пределы допустимых значений");
+                    CallException(value, range.Min, range.Max);
                 }
             }
         }
@@ -123,7 +123,7 @@ namespace Guide
                 }
                 else
                 {
-                    throw new ArgumentException("Значение выходит за пределы допустимых значений");
+                    CallException(value, range.Min, range.Max);
                 }
             }
         }
@@ -141,7 +141,7 @@ namespace Guide
                 }
                 else
                 {
-                    throw new Exception("Значение выходит за пределы допустимых значений");
+                    CallException(value, range.Min, range.Max);
                 }
             }
         }
@@ -159,7 +159,7 @@ namespace Guide
                 }
                 else
                 {
-                    throw new Exception("Значение выходит за пределы допустимых значений");
+                    CallException(value, range.Min, range.Max);
                 }
             }
         }
@@ -177,7 +177,7 @@ namespace Guide
                 }
                 else
                 {
-                    throw new Exception("Значение выходит за пределы допустимых значений");
+                    CallException(value, range.Min, range.Max);
                 }
             }
         }
@@ -196,7 +196,7 @@ namespace Guide
                 }
                 else
                 {
-                    throw new Exception("Значение выходит за пределы допустимых значений");
+                    CallException(value, range.Min, range.Max);
                 }
             }
         }
@@ -205,5 +205,11 @@ namespace Guide
         /// Свойство для максимальных и минимальных значения параметров
         /// </summary>
         public Dictionary<ParametersEnum, Range> RangeDictionary => _rangeDictionary;
+
+        private void CallException(double value,double min,double max)
+        {
+            throw new ArgumentException($"Введено {value}\n" +
+                        $"Должно быть от {min} до {max}.");
+        }
     }
 }

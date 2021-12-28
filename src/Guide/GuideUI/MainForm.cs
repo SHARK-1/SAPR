@@ -73,10 +73,19 @@ namespace GuideUI
                     CheckValueInTextBox(_textBoxDictionary[dependedParameter], dependedParameter);
                 }
             }
-            catch
+            catch (FormatException e)
             {
+                MessageBox.Show(e.Message, "Ошибка",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 textBox.BackColor = Color.Pink;
             }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.InnerException.Message, "Ошибка",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            
+            
         }
 
         //TODO: Дубли

@@ -63,6 +63,9 @@ namespace Kompas
         {
             _kompasConnector = kompasConnector;
             _guideParameters = guideParameters;
+        }
+        public void Build()
+        {
             CreateDocument();
             CreateGuide();
             CutAttachmentStroke();

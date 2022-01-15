@@ -205,7 +205,7 @@ namespace Guide
         /// Свойство для максимальных и минимальных значения параметров
         /// </summary>
         public Dictionary<ParametersEnum, Range> RangeDictionary => _rangeDictionary;
-
+        //TODO: В поле таком то введено тото
         private void CallException(double value,double min,double max)
         {
             throw new ArgumentException($"Введено {value}\n" +

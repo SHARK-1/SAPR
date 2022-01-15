@@ -4,6 +4,9 @@ using System.Windows.Forms;
 using Kompas;
 using Guide;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using Microsoft.VisualBasic.Devices;
 
 
 namespace GuideUI
@@ -27,7 +30,9 @@ namespace GuideUI
         public MainForm()
         {
             InitializeComponent();
-            _guideParameters = new GuideParameters();
+            _guideParameters = FileManager.LoadFile();
+            //Выгрузить значения на форму
+            //Написать для этого метод
             ValidateAllValues();
             _labelDictionary = new Dictionary<ParametersEnum, Label>
             {
@@ -43,9 +48,11 @@ namespace GuideUI
 
         private void BuildButton_Click(object sender, EventArgs e)
         {
-            _kompasConnector = new KompasConnector();
-            _kompasConnector.ConnectToKompas();
-            Builder builder = new Builder(_kompasConnector,_guideParameters);
+            //_kompasConnector = new KompasConnector();
+            //_kompasConnector.ConnectToKompas();
+            //Builder builder = new Builder(_kompasConnector,_guideParameters);
+            //builder.Build();
+            stressResting();
         }
 
         /// <summary>
@@ -83,9 +90,11 @@ namespace GuideUI
             {
                 MessageBox.Show(e.InnerException.Message, "Ошибка",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                textBox.BackColor = Color.Pink;
             }
-            
-            
+                
+
+
         }
 
         //TODO: Дубли
@@ -147,6 +156,7 @@ namespace GuideUI
                 checkParameters.AttachmentStrokeWidth = double.Parse(AttachmentStrokeWidthTextBox.Text);
                 checkParameters.HoleDiameter = double.Parse(HoleDiameterTextBox.Text);
                 checkParameters.GuideAngle = double.Parse(GuideAngleTextBox.Text);
+                FileManager.SaveFile(_guideParameters);
                 BuildButton.Enabled = true;
             }
             catch
@@ -188,6 +198,30 @@ namespace GuideUI
         private void GuideAngleTextBox_Enter(object sender, EventArgs e)
         {
             pictureBox1.Image = global::GuideUI.Properties.Resources._7;
+        }
+
+        private void stressResting()
+        {
+            var stopWatch = new Stopwatch();
+            stopWatch.Start();
+            var kompasConnector = new KompasConnector();
+            kompasConnector.ConnectToKompas();
+            var guidebuilder = new Builder(kompasConnector, _guideParameters);
+
+            int countModel = 0;
+
+            using (StreamWriter writer = new StreamWriter("E:\\TestSAPR\\log.txt", true))
+            {
+                while (true)
+                {
+                    guidebuilder.Build();
+                    var computerInfo = new ComputerInfo();
+                    var usedMemory = computerInfo.TotalPhysicalMemory - computerInfo.AvailablePhysicalMemory;
+                    countModel++;
+                    writer.WriteLineAsync($"{countModel}\t{stopWatch.ElapsedMilliseconds}\t{usedMemory}");
+                    writer.Flush();
+                }
+            }
         }
     }
 }

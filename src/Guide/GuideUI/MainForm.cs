@@ -17,6 +17,9 @@ namespace GuideUI
         /// Объект холнящий подключение к компасу
         /// </summary>
         KompasConnector _kompasConnector;
+        /// <summary>
+        /// Объект хранящий параметры направляющей
+        /// </summary>
         GuideParameters _guideParameters;
         /// <summary>
         /// Словарь для хранения элеменов Label, 
@@ -32,9 +35,6 @@ namespace GuideUI
             InitializeComponent();
             _kompasConnector = new KompasConnector();
             _guideParameters = FileManager.LoadFile();
-            //Выгрузить значения на форму
-
-            //Написать для этого метод
             ValidateAllValues();
             _labelDictionary = new Dictionary<ParametersEnum, Label>
             {
@@ -106,14 +106,12 @@ namespace GuideUI
             }
         }
 
-        //TODO: Дубли
         private void GuideLengthTextBox_Leave(object sender, EventArgs e)
         {
             CheckValueInTextBox((TextBox)sender,ParametersEnum.GuideLength);
             ValidateAllValues();
         }
 
-        //TODO: Дубли
         private void GuideWidthTextBox_Leave(object sender, EventArgs e)
         {
             CheckValueInTextBox((TextBox)sender, ParametersEnum.GuideWidth, ParametersEnum.AttachmentStrokeWidth);
@@ -125,28 +123,25 @@ namespace GuideUI
             CheckValueInTextBox((TextBox)sender, ParametersEnum.AttachmentStrokeWidth, ParametersEnum.AttachmentStrokeLength);
             ValidateAllValues();
         }
-
+        
         private void AttachmentStrokeLengthTextBox_Leave(object sender, EventArgs e)
         {
             CheckValueInTextBox((TextBox)sender, ParametersEnum.AttachmentStrokeLength);
             ValidateAllValues();
         }
 
-        //TODO: Дубли
         private void GuideDepthTextBox_Leave(object sender, EventArgs e)
         {
             CheckValueInTextBox((TextBox)sender, ParametersEnum.GuideDepth);
             ValidateAllValues();
         }
 
-        //TODO: Дубли
         private void HoleDiameterTextBox_Leave(object sender, EventArgs e)
         {
             CheckValueInTextBox((TextBox)sender, ParametersEnum.HoleDiameter);
             ValidateAllValues();
         }
 
-        //TODO: Дубли
         private void GuideAngleTextBox_Leave(object sender, EventArgs e)
         {
             CheckValueInTextBox((TextBox)sender, ParametersEnum.GuideAngle);
@@ -240,9 +235,11 @@ namespace GuideUI
             {
                 var propertyInfo = typeof(GuideParameters).
                     GetProperty(parameterName.ToString());
-                _textBoxDictionary[parameterName].Text = propertyInfo.GetValue(_guideParameters).ToString();
+                _textBoxDictionary[parameterName].Text = 
+                    propertyInfo.GetValue(_guideParameters).ToString();
                 Range range = ranges[parameterName];
-                _labelDictionary[parameterName].Text = $"({range.Min} - {range.Max} мм)";
+                _labelDictionary[parameterName].Text =
+                    $"({range.Min} - {range.Max} мм)";
             }
         }
     }

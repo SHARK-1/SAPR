@@ -11,11 +11,6 @@ namespace Guide.UnitTests
             //Setup
             var expectedParameters = new GuideParameters();
             expectedParameters.GuideAngle = 180;
-            var a = Directory.GetCurrentDirectory();
-            //if(Directory.Exists("TestData"))
-            //{
-                
-            //}
             //Act
             var actualParameters = FileManager.LoadFile(@"TestData\CorrectGuideParameters.json");
 

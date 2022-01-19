@@ -65,7 +65,6 @@ namespace GuideUI
             _kompasConnector.ConnectToKompas();
             Builder builder = new Builder(_kompasConnector, _guideParameters);
             builder.Build();
-            //stressTesting();
         }
 
         /// <summary>
@@ -205,29 +204,6 @@ namespace GuideUI
             pictureBox1.Image = global::GuideUI.Properties.Resources._7;
         }
 
-        private void stressTesting()
-        {
-            var stopWatch = new Stopwatch();
-            stopWatch.Start();
-            var kompasConnector = new KompasConnector();
-            kompasConnector.ConnectToKompas();
-            var guidebuilder = new Builder(kompasConnector, _guideParameters);
-
-            int countModel = 0;
-
-            using (StreamWriter writer = new StreamWriter("E:\\TestSAPR\\log.txt", true))
-            {
-                while (true)
-                {
-                    guidebuilder.Build();
-                    var computerInfo = new ComputerInfo();
-                    var usedMemory = computerInfo.TotalPhysicalMemory - computerInfo.AvailablePhysicalMemory;
-                    countModel++;
-                    writer.WriteLineAsync($"{countModel}\t{stopWatch.ElapsedMilliseconds}\t{usedMemory}");
-                    writer.Flush();
-                }
-            }
-        }
 
         private void LoadParametersToForm()
         {

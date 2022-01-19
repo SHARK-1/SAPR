@@ -18,7 +18,7 @@ namespace Guide.UnitTests
             Assert.AreEqual(expectedParameters, actualParameters);
         }
 
-        [TestCase(@"TestData\CorrectGuideParameters.json", TestName = "Загрузка параметров, исключение")]
+        [TestCase(@"TestData\CorruptedGuideParameters.json", TestName = "Загрузка параметров, исключение")]
         [TestCase(@"TestData\NonExistentParameters.json", TestName = "Загрузка параметров, файл не существует")]
         public void FileManager_LoadTest_Exception(string path)
         {

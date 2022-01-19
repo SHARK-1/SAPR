@@ -30,29 +30,41 @@ namespace GuideUI
         public MainForm()
         {
             InitializeComponent();
+            _kompasConnector = new KompasConnector();
             _guideParameters = FileManager.LoadFile();
             //Выгрузить значения на форму
+
             //Написать для этого метод
             ValidateAllValues();
             _labelDictionary = new Dictionary<ParametersEnum, Label>
             {
                 { ParametersEnum.AttachmentStrokeLength, AttachmentStrokeLengthLabel },
-                { ParametersEnum.AttachmentStrokeWidth, AttachmentStrokeWidthLabel }
+                { ParametersEnum.AttachmentStrokeWidth, AttachmentStrokeWidthLabel },
+                { ParametersEnum.GuideLength, GuideLengthLabel },
+                { ParametersEnum.GuideWidth, GuideWidthLabel },
+                { ParametersEnum.GuideDepth, GuideDepthLabel },
+                { ParametersEnum.GuideAngle,GuideAngleLabel },
+                { ParametersEnum.HoleDiameter, HoleDiameterLabel }
             };
-            _textBoxDictionary= new Dictionary<ParametersEnum, TextBox>
+            _textBoxDictionary = new Dictionary<ParametersEnum, TextBox>
                             {
                 { ParametersEnum.AttachmentStrokeLength, AttachmentStrokeLengthTextBox },
-                { ParametersEnum.AttachmentStrokeWidth, AttachmentStrokeWidthTextBox }
+                { ParametersEnum.AttachmentStrokeWidth, AttachmentStrokeWidthTextBox },
+                { ParametersEnum.GuideLength, GuideLengthTextBox },
+                { ParametersEnum.GuideWidth, GuideWidthTextBox },
+                { ParametersEnum.GuideDepth, GuideDepthTextBox },
+                { ParametersEnum.GuideAngle,GuideAngleTextBox },
+                { ParametersEnum.HoleDiameter, HoleDiameterTextBox }
             };
+            LoadParametersToForm();
         }
 
         private void BuildButton_Click(object sender, EventArgs e)
         {
-            //_kompasConnector = new KompasConnector();
-            //_kompasConnector.ConnectToKompas();
-            //Builder builder = new Builder(_kompasConnector,_guideParameters);
-            //builder.Build();
-            stressResting();
+            _kompasConnector.ConnectToKompas();
+            Builder builder = new Builder(_kompasConnector, _guideParameters);
+            builder.Build();
+            //stressTesting();
         }
 
         /// <summary>
@@ -92,9 +104,6 @@ namespace GuideUI
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 textBox.BackColor = Color.Pink;
             }
-                
-
-
         }
 
         //TODO: Дубли
@@ -200,7 +209,7 @@ namespace GuideUI
             pictureBox1.Image = global::GuideUI.Properties.Resources._7;
         }
 
-        private void stressResting()
+        private void stressTesting()
         {
             var stopWatch = new Stopwatch();
             stopWatch.Start();
@@ -221,6 +230,19 @@ namespace GuideUI
                     writer.WriteLineAsync($"{countModel}\t{stopWatch.ElapsedMilliseconds}\t{usedMemory}");
                     writer.Flush();
                 }
+            }
+        }
+
+        private void LoadParametersToForm()
+        {
+            var ranges = _guideParameters.RangeDictionary;
+            foreach (ParametersEnum parameterName in _textBoxDictionary.Keys)
+            {
+                var propertyInfo = typeof(GuideParameters).
+                    GetProperty(parameterName.ToString());
+                _textBoxDictionary[parameterName].Text = propertyInfo.GetValue(_guideParameters).ToString();
+                Range range = ranges[parameterName];
+                _labelDictionary[parameterName].Text = $"({range.Min} - {range.Max} мм)";
             }
         }
     }

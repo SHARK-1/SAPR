@@ -45,13 +45,13 @@ namespace GuideUI
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
+            this.GuideLengthLabel = new System.Windows.Forms.Label();
             this.GuideWidthLabel = new System.Windows.Forms.Label();
             this.AttachmentStrokeLengthLabel = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
+            this.GuideDepthLabel = new System.Windows.Forms.Label();
+            this.HoleDiameterLabel = new System.Windows.Forms.Label();
             this.AttachmentStrokeWidthLabel = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
+            this.GuideAngleLabel = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -221,15 +221,15 @@ namespace GuideUI
             this.label7.TabIndex = 14;
             this.label7.Text = "Диаметр отверстия";
             // 
-            // label8
+            // GuideLengthLabel
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label8.Location = new System.Drawing.Point(355, 8);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(103, 20);
-            this.label8.TabIndex = 16;
-            this.label8.Text = "(50 - 150 мм)";
+            this.GuideLengthLabel.AutoSize = true;
+            this.GuideLengthLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.GuideLengthLabel.Location = new System.Drawing.Point(355, 8);
+            this.GuideLengthLabel.Name = "GuideLengthLabel";
+            this.GuideLengthLabel.Size = new System.Drawing.Size(103, 20);
+            this.GuideLengthLabel.TabIndex = 16;
+            this.GuideLengthLabel.Text = "(50 - 150 мм)";
             // 
             // GuideWidthLabel
             // 
@@ -251,25 +251,25 @@ namespace GuideUI
             this.AttachmentStrokeLengthLabel.TabIndex = 19;
             this.AttachmentStrokeLengthLabel.Text = "(15 - 90 мм)";
             // 
-            // label11
+            // GuideDepthLabel
             // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label11.Location = new System.Drawing.Point(355, 72);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(85, 20);
-            this.label11.TabIndex = 18;
-            this.label11.Text = "(5 - 20 мм)";
+            this.GuideDepthLabel.AutoSize = true;
+            this.GuideDepthLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.GuideDepthLabel.Location = new System.Drawing.Point(355, 72);
+            this.GuideDepthLabel.Name = "GuideDepthLabel";
+            this.GuideDepthLabel.Size = new System.Drawing.Size(85, 20);
+            this.GuideDepthLabel.TabIndex = 18;
+            this.GuideDepthLabel.Text = "(5 - 20 мм)";
             // 
-            // label12
+            // HoleDiameterLabel
             // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label12.Location = new System.Drawing.Point(355, 168);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(85, 20);
-            this.label12.TabIndex = 21;
-            this.label12.Text = "(2 - 20 мм)";
+            this.HoleDiameterLabel.AutoSize = true;
+            this.HoleDiameterLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.HoleDiameterLabel.Location = new System.Drawing.Point(355, 168);
+            this.HoleDiameterLabel.Name = "HoleDiameterLabel";
+            this.HoleDiameterLabel.Size = new System.Drawing.Size(85, 20);
+            this.HoleDiameterLabel.TabIndex = 21;
+            this.HoleDiameterLabel.Text = "(2 - 20 мм)";
             // 
             // AttachmentStrokeWidthLabel
             // 
@@ -281,15 +281,15 @@ namespace GuideUI
             this.AttachmentStrokeWidthLabel.TabIndex = 20;
             this.AttachmentStrokeWidthLabel.Text = "(3 - 5 мм)";
             // 
-            // label14
+            // GuideAngleLabel
             // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label14.Location = new System.Drawing.Point(355, 200);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(82, 20);
-            this.label14.TabIndex = 22;
-            this.label14.Text = "(65 - 270°)";
+            this.GuideAngleLabel.AutoSize = true;
+            this.GuideAngleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.GuideAngleLabel.Location = new System.Drawing.Point(355, 200);
+            this.GuideAngleLabel.Name = "GuideAngleLabel";
+            this.GuideAngleLabel.Size = new System.Drawing.Size(82, 20);
+            this.GuideAngleLabel.TabIndex = 22;
+            this.GuideAngleLabel.Text = "(65 - 270°)";
             // 
             // pictureBox1
             // 
@@ -316,13 +316,13 @@ namespace GuideUI
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(850, 264);
-            this.Controls.Add(this.label14);
-            this.Controls.Add(this.label12);
+            this.Controls.Add(this.GuideAngleLabel);
+            this.Controls.Add(this.HoleDiameterLabel);
             this.Controls.Add(this.AttachmentStrokeWidthLabel);
             this.Controls.Add(this.AttachmentStrokeLengthLabel);
-            this.Controls.Add(this.label11);
+            this.Controls.Add(this.GuideDepthLabel);
             this.Controls.Add(this.GuideWidthLabel);
-            this.Controls.Add(this.label8);
+            this.Controls.Add(this.GuideLengthLabel);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -367,13 +367,13 @@ namespace GuideUI
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label GuideLengthLabel;
         private System.Windows.Forms.Label GuideWidthLabel;
         private System.Windows.Forms.Label AttachmentStrokeLengthLabel;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label GuideDepthLabel;
+        private System.Windows.Forms.Label HoleDiameterLabel;
         private System.Windows.Forms.Label AttachmentStrokeWidthLabel;
-        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label GuideAngleLabel;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
     }

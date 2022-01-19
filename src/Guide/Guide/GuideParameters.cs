@@ -10,7 +10,7 @@ namespace Guide
      /// <summary>
      /// Класс хранящий параметры направляющей
      /// </summary>
-    public class GuideParameters
+    public class GuideParameters:IEquatable<GuideParameters>
     {
         /// <summary>
         /// Длинна направляющей
@@ -210,6 +210,27 @@ namespace Guide
         {
             throw new ArgumentException($"Введено {value}\n" +
                         $"Должно быть от {min} до {max}.");
+        }
+
+        public bool Equals(GuideParameters other)
+        {
+            if (ReferenceEquals(null, other)) return false;
+            if (ReferenceEquals(this, other)) return true;
+            return _guideLength == other._guideLength &&
+                   _guideWidth == other._guideWidth &&
+                   _guideDepth == other._guideDepth &&
+                   _guideAngle == other._guideAngle &&
+                   _attachmentStrokeLength == other._attachmentStrokeLength &&
+                   _attachmentStrokeWidth == other._attachmentStrokeWidth &&
+                   _holeDiameter == other._holeDiameter;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != this.GetType()) return false;
+            return Equals((GuideParameters)obj);
         }
     }
 }

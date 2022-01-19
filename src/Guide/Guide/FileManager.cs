@@ -28,19 +28,34 @@ namespace Guide
                 writer.Write(parameters);
             }
         }
-        public static GuideParameters LoadFile()
-        {
-            if (!File.Exists(Path.Combine(_directoryPath, _fileName)))
+        public static GuideParameters LoadFile(string path = "")
+        {   
+            path=string.IsNullOrEmpty(path)
+                ? Path.Combine(_directoryPath, _fileName)
+                : path;
+            var parameters = new GuideParameters();
+            if (!File.Exists(path))
             {
                 return new GuideParameters();
             }
-            string parameters;
-            using (StreamReader reader=new StreamReader(Path.Combine(_directoryPath, _fileName)))
+            JsonSerializer serializer = new JsonSerializer();
+            using (StreamReader streamReader=new StreamReader(path))
+            using (JsonReader jsonReader=new JsonTextReader(streamReader))
             {
-                parameters = reader.ReadToEnd();
+                try
+                {
+                    parameters = serializer.Deserialize<GuideParameters>(jsonReader);
+                }
+                catch
+                {
+                    return parameters;
+                }
+                if(parameters==null)
+                {
+                    return new GuideParameters();
+                }
             }
-            var guideParameters = JsonConvert.DeserializeObject<GuideParameters>(parameters);
-            return guideParameters;
+            return parameters;
         }
     }
 }

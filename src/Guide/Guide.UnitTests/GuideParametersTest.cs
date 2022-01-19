@@ -1,6 +1,8 @@
 ﻿using System.Reflection;
 using NUnit.Framework;
 
+using System.IO;
+
 namespace Guide.UnitTests
 {
 

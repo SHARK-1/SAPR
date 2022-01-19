@@ -34,7 +34,8 @@ namespace GuideUI
         {
             InitializeComponent();
             _kompasConnector = new KompasConnector();
-            _guideParameters = FileManager.LoadFile();
+            string path = FileManager._directoryPath + FileManager._fileName;
+            _guideParameters = FileManager.LoadFile(path);
             ValidateAllValues();
             _labelDictionary = new Dictionary<ParametersEnum, Label>
             {
@@ -160,7 +161,7 @@ namespace GuideUI
                 checkParameters.AttachmentStrokeWidth = double.Parse(AttachmentStrokeWidthTextBox.Text);
                 checkParameters.HoleDiameter = double.Parse(HoleDiameterTextBox.Text);
                 checkParameters.GuideAngle = double.Parse(GuideAngleTextBox.Text);
-                FileManager.SaveFile(_guideParameters);
+                FileManager.SaveFile(_guideParameters,FileManager._directoryPath);
                 BuildButton.Enabled = true;
             }
             catch

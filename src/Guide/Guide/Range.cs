@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Guide
+﻿namespace Guide
 {
     /// <summary>
     /// Структура с максимальным и минимальным значение параметра направляющей

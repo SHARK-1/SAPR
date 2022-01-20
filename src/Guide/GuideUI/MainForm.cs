@@ -4,9 +4,6 @@ using System.Windows.Forms;
 using Kompas;
 using Guide;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using Microsoft.VisualBasic.Devices;
 
 
 namespace GuideUI

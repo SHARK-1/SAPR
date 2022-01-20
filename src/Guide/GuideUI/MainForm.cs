@@ -94,15 +94,15 @@ namespace GuideUI
             }
             catch (FormatException e)
             {
-                MessageBox.Show(e.Message, "Ошибка",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 textBox.BackColor = Color.Pink;
+                MessageBox.Show(e.Message, "Ошибка",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.InnerException.Message, "Ошибка",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 textBox.BackColor = Color.Pink;
+                MessageBox.Show(e.InnerException.Message, "Ошибка",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -215,8 +215,16 @@ namespace GuideUI
                 _textBoxDictionary[parameterName].Text = 
                     propertyInfo.GetValue(_guideParameters).ToString();
                 Range range = ranges[parameterName];
-                _labelDictionary[parameterName].Text =
+                if (parameterName==ParametersEnum.GuideAngle)
+                {
+                    _labelDictionary[parameterName].Text =
+                    $"({range.Min} - {range.Max}°)";
+                }
+                else
+                {
+                    _labelDictionary[parameterName].Text =
                     $"({range.Min} - {range.Max} мм)";
+                }
             }
         }
     }

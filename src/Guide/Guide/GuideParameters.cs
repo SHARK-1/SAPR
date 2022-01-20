@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace Guide
 {
-     //TODO: XML
      /// <summary>
      /// Класс хранящий параметры направляющей
      /// </summary>
@@ -84,7 +83,7 @@ namespace Guide
                 }
                 else
                 {
-                    CallException(value, range.Min, range.Max);
+                    CallException(value, range.Min, range.Max, "длина направляющей");
                 }
             }
         }
@@ -105,7 +104,7 @@ namespace Guide
                 }
                 else
                 {
-                    CallException(value, range.Min, range.Max);
+                    CallException(value, range.Min, range.Max, "ширина направляющеей");
                 }
             }
         }
@@ -123,7 +122,7 @@ namespace Guide
                 }
                 else
                 {
-                    CallException(value, range.Min, range.Max);
+                    CallException(value, range.Min, range.Max, "толщина направляющей");
                 }
             }
         }
@@ -141,7 +140,7 @@ namespace Guide
                 }
                 else
                 {
-                    CallException(value, range.Min, range.Max);
+                    CallException(value, range.Min, range.Max, "Угол наклона направляющей");
                 }
             }
         }
@@ -159,7 +158,7 @@ namespace Guide
                 }
                 else
                 {
-                    CallException(value, range.Min, range.Max);
+                    CallException(value, range.Min, range.Max, "диаметр отверстия");
                 }
             }
         }
@@ -177,7 +176,7 @@ namespace Guide
                 }
                 else
                 {
-                    CallException(value, range.Min, range.Max);
+                    CallException(value, range.Min, range.Max, "длина хода крепления");
                 }
             }
         }
@@ -196,7 +195,7 @@ namespace Guide
                 }
                 else
                 {
-                    CallException(value, range.Min, range.Max);
+                    CallException(value, range.Min, range.Max,"ширина хода крепления");
                 }
             }
         }
@@ -205,10 +204,9 @@ namespace Guide
         /// Свойство для максимальных и минимальных значения параметров
         /// </summary>
         public Dictionary<ParametersEnum, Range> RangeDictionary => _rangeDictionary;
-        //TODO: В поле таком то введено тото
-        private void CallException(double value,double min,double max)
+        private void CallException(double value,double min,double max,string parameterName)
         {
-            throw new ArgumentException($"Введено {value}\n" +
+            throw new ArgumentException($"В поле \"{parameterName}\" введено {value}.\n" +
                         $"Должно быть от {min} до {max}.");
         }
 

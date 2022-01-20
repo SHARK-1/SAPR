@@ -12,7 +12,7 @@ namespace Guide
     {
         public static readonly string _directoryPath = 
             Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)
-            + @"\Guide";
+            + @"\Guide\";
         public static readonly string _fileName = "GuideParameters.json";
         public static void SaveFile(GuideParameters guideParameters, string path)
         {

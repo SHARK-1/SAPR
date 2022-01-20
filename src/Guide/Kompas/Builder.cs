@@ -11,7 +11,6 @@ using Guide;
 
 namespace Kompas
 {
-     //TODO: XML
      /// <summary>
      /// Класс, строящий деталь в компас-3D
      /// </summary>
@@ -85,7 +84,6 @@ namespace Kompas
         /// <summary>
         /// Создание направляюще без отверстия для крепления к поверхности
         /// </summary>
-        //TODO: Вынести подсчет координат точек в отделюную функцию
         private void CreateGuide()
         {
             KompasObject kompas = _kompasConnector.Kompas;
@@ -102,7 +100,6 @@ namespace Kompas
             { 0, 0 },
             { 0, 0 },
             { 0, 0 } };
-            //TODO: toconst
             ksCON[] con = new ksCON[5]
             {
                 kompas.GetParamStruct(CON_STRUCT_TYPE),
@@ -370,7 +367,6 @@ namespace Kompas
             _sketchDefinition.SetPlane(_currentPlan);
             _sketch.Create();
             _document2D = (ksDocument2D)_sketchDefinition.BeginEdit();
-            //TODO: toconst
 
             double wallReserve = 5;
             double headReserve = 1.5*_guideParameters.HoleDiameter;

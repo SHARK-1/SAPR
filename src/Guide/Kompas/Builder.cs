@@ -157,7 +157,7 @@ namespace Kompas
                  90 - _guideParameters.GuideAngle + 180, radius, con[3]);
             //////////////////////////////
 
-            int con14Index=0;
+            int con14Index = 0;
             short con14rotation = 0;
             if (_guideParameters.GuideAngle<180)
             {
@@ -170,6 +170,7 @@ namespace Kompas
                  con14Index = 2;
                 con14rotation = -1;
             }
+
             if (_guideParameters.GuideAngle != 180)
             {
                 _document2D.ksArcByPoint(con[1].GetXc(con14Index),
@@ -195,7 +196,8 @@ namespace Kompas
                     , con[4].GetY1(con14Index)+ offset, points[0,0],
                     points[0,1]+ offset, 1);
             }
-            else{
+            else
+            {
                 _document2D.ksLineSeg(con[0].GetX2(1),
                     con[0].GetY2(1)+ offset, con[2].GetX1(1),
                     con[2].GetY1(1) + offset, 1);
@@ -267,22 +269,25 @@ namespace Kompas
             ksMathematic2D ksmathematic = kompas.GetMathematic2D();
             double var = ksmathematic.ksGetCurvePerpendicular(line, point[0], point[1]);
 
+            //TODO:
             double[,] attachmentpoints = new double[6, 2]
-            { { 0, 0 },
-            { 0, 0 },
-            { 0, 0 },
-            { 0, 0 },
-            { 0, 0 },
-            { 0, 0 } };
+            { 
+                { 0, 0 },
+                { 0, 0 },
+                { 0, 0 },
+                { 0, 0 },
+                { 0, 0 },
+                { 0, 0 }
+            };
             for (int i = 0; i < 6; i++)
             {
                 if (i<3)
                 {
-                    _document2D.ksMovePoint(
-                        ref attachmentpoints[i, 0], 
+                     _document2D.ksMovePoint(
+                        ref attachmentpoints[i, 0],
                         ref attachmentpoints[i, 1],
                         180 - _guideParameters.GuideAngle,
-                        0.5 * (_guideParameters.GuideWidth + _guideParameters.AttachmentStrokeWidth));
+                        0.5 * (_guideParameters.GuideWidth + _guideParameters.AttachmentStrokeWidth);
                 }
                 else
                 {

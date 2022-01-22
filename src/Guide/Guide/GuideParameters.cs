@@ -188,6 +188,7 @@ namespace Guide
                 if (Validator.ValidateRange(value, range.Min, range.Max))
                 {
                     _attachmentStrokeWidth = value;
+                    //TODO: RSDN
                     _rangeDictionary[ParametersEnum.AttachmentStrokeLength] = new Range(5 * _attachmentStrokeWidth, 90);
                 }
                 else
@@ -201,6 +202,8 @@ namespace Guide
         /// Свойство для максимальных и минимальных значения параметров
         /// </summary>
         public Dictionary<ParametersEnum, Range> RangeDictionary => _rangeDictionary;
+
+        //TODO: XML
         private void CallException(double value,double min,double max,string parameterName)
         {
             throw new ArgumentException($"В поле \"{parameterName}\" введено {value}.\n" +
@@ -215,6 +218,7 @@ namespace Guide
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
+
             return _guideLength == other._guideLength &&
                    _guideWidth == other._guideWidth &&
                    _guideDepth == other._guideDepth &&
@@ -233,6 +237,7 @@ namespace Guide
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
+
             return Equals((GuideParameters)obj);
         }
     }

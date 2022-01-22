@@ -8,6 +8,7 @@ namespace Guide.UnitTests
 
     public class GuideParametersTest
     {
+        //TODO: RSDN
         [TestCase(ParametersEnum.GuideLength,60, TestName = "Длинна направляющей, позитив")]
         [TestCase(ParametersEnum.GuideWidth, 11, TestName = "Ширина направляющей, позитив")]
         [TestCase(ParametersEnum.GuideDepth, 6, TestName = "Толщина направляющей, позитив")]
@@ -30,6 +31,7 @@ namespace Guide.UnitTests
             Assert.AreEqual(expectedValue, propertyInfo.GetValue(parameter));
         }
 
+        //TODO: RSDN
         [TestCase(ParametersEnum.GuideLength, 30, TestName = "Длинна направляющей, меньше положенного, исключение")]
         [TestCase(ParametersEnum.GuideLength, 160, TestName = "Длинна направляющей, больше положенного, исключение")]
         [TestCase(ParametersEnum.GuideWidth, 5, TestName = "Ширина направляющей, меньше положенного, исключение")]
@@ -94,6 +96,7 @@ namespace Guide.UnitTests
             parameter.AttachmentStrokeLength = 90;
             parameter.AttachmentStrokeWidth = attachmentStrokeWidth;
 
+            //TODO: RSDN
             //Assert
             Assert.AreEqual(expectedValue, parameter.RangeDictionary[ParametersEnum.AttachmentStrokeLength].Min);
         }

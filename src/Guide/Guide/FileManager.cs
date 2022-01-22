@@ -15,6 +15,7 @@ namespace Guide
         public static readonly string _directoryPath = 
             Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)
             + @"\Guide\";
+
         /// <summary>
         /// Имя файла сохранения
         /// </summary>
@@ -51,8 +52,9 @@ namespace Guide
                 return parameters;
             }
             JsonSerializer serializer = new JsonSerializer();
-            using (StreamReader streamReader=new StreamReader(path))
-            using (JsonReader jsonReader=new JsonTextReader(streamReader))
+            //TODO: RSDN
+            using (StreamReader streamReader = new StreamReader(path))
+            using (JsonReader jsonReader = new JsonTextReader(streamReader))
             {
                 try
                 {

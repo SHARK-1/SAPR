@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using Kompas;
 using Guide;
 using System.Collections.Generic;
+using System.Linq;
 
 
 namespace GuideUI
@@ -48,7 +49,7 @@ namespace GuideUI
                 { ParametersEnum.HoleDiameter, HoleDiameterLabel }
             };
             _textBoxDictionary = new Dictionary<ParametersEnum, TextBox>
-                            {
+            {
                 { ParametersEnum.AttachmentStrokeLength, AttachmentStrokeLengthTextBox },
                 { ParametersEnum.AttachmentStrokeWidth, AttachmentStrokeWidthTextBox },
                 { ParametersEnum.GuideLength, GuideLengthTextBox },
@@ -109,6 +110,8 @@ namespace GuideUI
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        //TODO: дубль
         /// <summary>
         /// Событие, при фотрере фокуса с элемента TextBox
         /// </summary>
@@ -116,7 +119,10 @@ namespace GuideUI
         /// <param name="e">Передынные аргументы</param>
         private void GuideLengthTextBox_Leave(object sender, EventArgs e)
         {
-            CheckValueInTextBox((TextBox)sender,ParametersEnum.GuideLength);
+            //TODO:
+            var enum1 = _textBoxDictionary.
+                FirstOrDefault(x => x.Value == (TextBox)sender).Key;
+            CheckValueInTextBox((TextBox)sender, enum1);
             ValidateAllValues();
         }
 
@@ -185,6 +191,7 @@ namespace GuideUI
             CheckValueInTextBox((TextBox)sender, ParametersEnum.GuideAngle);
             ValidateAllValues();
         }
+
         /// <summary>
         /// Проверка на корректность ввода во всех полях
         /// </summary>
@@ -209,6 +216,7 @@ namespace GuideUI
             }
         }
 
+        //TODO: дубль
         /// <summary>
         /// Событие, при наведении фокуса на элемент TextBox
         /// </summary>
@@ -286,16 +294,12 @@ namespace GuideUI
                 _textBoxDictionary[parameterName].Text = 
                     propertyInfo.GetValue(_guideParameters).ToString();
                 Range range = ranges[parameterName];
-                if (parameterName==ParametersEnum.GuideAngle)
-                {
-                    _labelDictionary[parameterName].Text =
-                    $"({range.Min} - {range.Max}°)";
-                }
-                else
-                {
-                    _labelDictionary[parameterName].Text =
-                    $"({range.Min} - {range.Max} мм)";
-                }
+                
+                var stringUnit = parameterName == ParametersEnum.GuideAngle 
+                        ? "°"
+                        : "мм";
+                _labelDictionary[parameterName].Text =
+                    $"({range.Min} - {range.Max}{stringUnit})";
             }
         }
     }

@@ -24,6 +24,7 @@ namespace Guide.UnitTests
                 Assert.AreEqual(expectedValue, range.Min);
             }
         }
+
         [TestCase(true, TestName = "Максимальное значение")]
         [TestCase(false, TestName = "Минимальное значение")]
         public void TestSet_RangeMinMax(bool isMaxBorder)

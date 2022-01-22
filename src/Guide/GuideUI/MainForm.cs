@@ -24,7 +24,7 @@ namespace GuideUI
         /// </summary>
         private readonly Dictionary<ParametersEnum, Label> _labelDictionary;
         /// <summary>
-        /// Словарь для хранения элеменов TextBox, с зависимыми парапетрами
+        /// Словарь для хранения элеменов TextBox с парапетрами
         /// </summary>
         private readonly Dictionary<ParametersEnum, TextBox> _textBoxDictionary;
         /// <summary>

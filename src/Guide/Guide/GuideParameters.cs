@@ -206,7 +206,11 @@ namespace Guide
             throw new ArgumentException($"В поле \"{parameterName}\" введено {value}.\n" +
                         $"Должно быть от {min} до {max}.");
         }
-
+        /// <summary>
+        /// Сравнение с другим объектом параметров
+        /// </summary>
+        /// <param name="other">Объект, с которым сравнивают</param>
+        /// <returns></returns>
         public bool Equals(GuideParameters other)
         {
             if (ReferenceEquals(null, other)) return false;
@@ -219,7 +223,11 @@ namespace Guide
                    _attachmentStrokeWidth == other._attachmentStrokeWidth &&
                    _holeDiameter == other._holeDiameter;
         }
-
+        /// <summary>
+        /// Сравнение с другим объектом
+        /// </summary>
+        /// <param name="obj">Объект, с которым сравнивают</param>
+        /// <returns></returns>
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;

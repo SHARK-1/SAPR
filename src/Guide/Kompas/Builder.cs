@@ -57,6 +57,9 @@ namespace Kompas
             _kompasConnector = kompasConnector;
             _guideParameters = guideParameters;
         }
+        /// <summary>
+        /// Построение объекта
+        /// </summary>
         public void Build()
         {
             CreateDocument();

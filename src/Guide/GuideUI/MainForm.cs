@@ -27,6 +27,9 @@ namespace GuideUI
         /// Словарь для хранения элеменов TextBox, с зависимыми парапетрами
         /// </summary>
         private readonly Dictionary<ParametersEnum, TextBox> _textBoxDictionary;
+        /// <summary>
+        /// Форма приложения
+        /// </summary>
         public MainForm()
         {
             InitializeComponent();
@@ -56,7 +59,11 @@ namespace GuideUI
             };
             LoadParametersToForm();
         }
-
+        /// <summary>
+        /// Событие, для построения модели
+        /// </summary>
+        /// <param name="sender">Вызывающий объект</param>
+        /// <param name="e">Передынные аргументы</param>
         private void BuildButton_Click(object sender, EventArgs e)
         {
             _kompasConnector.ConnectToKompas();
@@ -102,49 +109,85 @@ namespace GuideUI
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
+        /// <summary>
+        /// Событие, при фотрере фокуса с элемента TextBox
+        /// </summary>
+        /// <param name="sender">Вызывающий объект</param>
+        /// <param name="e">Передынные аргументы</param>
         private void GuideLengthTextBox_Leave(object sender, EventArgs e)
         {
             CheckValueInTextBox((TextBox)sender,ParametersEnum.GuideLength);
             ValidateAllValues();
         }
 
+        /// <summary>
+        /// Событие, при фотрере фокуса с элемента TextBox
+        /// </summary>
+        /// <param name="sender">Вызывающий объект</param>
+        /// <param name="e">Передынные аргументы</param>
         private void GuideWidthTextBox_Leave(object sender, EventArgs e)
         {
             CheckValueInTextBox((TextBox)sender, ParametersEnum.GuideWidth, ParametersEnum.AttachmentStrokeWidth);
             ValidateAllValues();
         }
 
+        /// <summary>
+        /// Событие, при фотрере фокуса с элемента TextBox
+        /// </summary>
+        /// <param name="sender">Вызывающий объект</param>
+        /// <param name="e">Передынные аргументы</param>
         private void AttachmentStrokeWidthTextBox_Leave(object sender, EventArgs e)
         {
             CheckValueInTextBox((TextBox)sender, ParametersEnum.AttachmentStrokeWidth, ParametersEnum.AttachmentStrokeLength);
             ValidateAllValues();
         }
-        
+
+        /// <summary>
+        /// Событие, при фотрере фокуса с элемента TextBox
+        /// </summary>
+        /// <param name="sender">Вызывающий объект</param>
+        /// <param name="e">Передынные аргументы</param>
         private void AttachmentStrokeLengthTextBox_Leave(object sender, EventArgs e)
         {
             CheckValueInTextBox((TextBox)sender, ParametersEnum.AttachmentStrokeLength);
             ValidateAllValues();
         }
 
+        /// <summary>
+        /// Событие, при фотрере фокуса с элемента TextBox
+        /// </summary>
+        /// <param name="sender">Вызывающий объект</param>
+        /// <param name="e">Передынные аргументы</param>
         private void GuideDepthTextBox_Leave(object sender, EventArgs e)
         {
             CheckValueInTextBox((TextBox)sender, ParametersEnum.GuideDepth);
             ValidateAllValues();
         }
 
+        /// <summary>
+        /// Событие, при фотрере фокуса с элемента TextBox
+        /// </summary>
+        /// <param name="sender">Вызывающий объект</param>
+        /// <param name="e">Передынные аргументы</param>
         private void HoleDiameterTextBox_Leave(object sender, EventArgs e)
         {
             CheckValueInTextBox((TextBox)sender, ParametersEnum.HoleDiameter);
             ValidateAllValues();
         }
 
+        /// <summary>
+        /// Событие, при фотрере фокуса с элемента TextBox
+        /// </summary>
+        /// <param name="sender">Вызывающий объект</param>
+        /// <param name="e">Передынные аргументы</param>
         private void GuideAngleTextBox_Leave(object sender, EventArgs e)
         {
             CheckValueInTextBox((TextBox)sender, ParametersEnum.GuideAngle);
             ValidateAllValues();
         }
-
+        /// <summary>
+        /// Проверка на корректность ввода во всех полях
+        /// </summary>
         private void ValidateAllValues()
         {
             try
@@ -166,42 +209,73 @@ namespace GuideUI
             }
         }
 
+        /// <summary>
+        /// Событие, при наведении фокуса на элемент TextBox
+        /// </summary>
+        /// <param name="sender">Вызывающий объект</param>
+        /// <param name="e">Передынные аргументы</param>
         private void GuideLengthTextBox_Enter(object sender, EventArgs e)
         {
             pictureBox1.Image = global::GuideUI.Properties.Resources._1;
         }
-
+        /// <summary>
+        /// Событие, при наведении фокуса на элемент TextBox
+        /// </summary>
+        /// <param name="sender">Вызывающий объект</param>
+        /// <param name="e">Передынные аргументы</param>
         private void GuideWidthTextBox_Enter(object sender, EventArgs e)
         {
             pictureBox1.Image = global::GuideUI.Properties.Resources._2;
         }
-
+        /// <summary>
+        /// Событие, при наведении фокуса на элемент TextBox
+        /// </summary>
+        /// <param name="sender">Вызывающий объект</param>
+        /// <param name="e">Передынные аргументы</param>
         private void GuideDepthTextBox_Enter(object sender, EventArgs e)
         {
             pictureBox1.Image = global::GuideUI.Properties.Resources._3;
         }
-
+        /// <summary>
+        /// Событие, при наведении фокуса на элемент TextBox
+        /// </summary>
+        /// <param name="sender">Вызывающий объект</param>
+        /// <param name="e">Передынные аргументы</param>
         private void AttachmentStrokeLengthTextBox_Enter(object sender, EventArgs e)
         {
             pictureBox1.Image = global::GuideUI.Properties.Resources._4;
         }
-
+        /// <summary>
+        /// Событие, при наведении фокуса на элемент TextBox
+        /// </summary>
+        /// <param name="sender">Вызывающий объект</param>
+        /// <param name="e">Передынные аргументы</param>
         private void AttachmentStrokeWidthTextBox_Enter(object sender, EventArgs e)
         {
             pictureBox1.Image = global::GuideUI.Properties.Resources._5;
         }
-
+        /// <summary>
+        /// Событие, при наведении фокуса на элемент TextBox
+        /// </summary>
+        /// <param name="sender">Вызывающий объект</param>
+        /// <param name="e">Передынные аргументы</param>
         private void HoleDiameterTextBox_Enter(object sender, EventArgs e)
         {
             pictureBox1.Image = global::GuideUI.Properties.Resources._6;
         }
-
+        /// <summary>
+        /// Событие, при наведении фокуса на элемент TextBox
+        /// </summary>
+        /// <param name="sender">Вызывающий объект</param>
+        /// <param name="e">Передынные аргументы</param>
         private void GuideAngleTextBox_Enter(object sender, EventArgs e)
         {
             pictureBox1.Image = global::GuideUI.Properties.Resources._7;
         }
 
-
+        /// <summary>
+        /// Загрузка параметров модели на форму
+        /// </summary>
         private void LoadParametersToForm()
         {
             var ranges = _guideParameters.RangeDictionary;

@@ -152,5 +152,18 @@ namespace Guide.UnitTests
             //Assert
             Assert.AreEqual(expectedValue, assertedValue);
         }
+        [TestCase(TestName = "Equals с null")]
+        public void TestEqualsWithNull()
+        {
+            //Arrange
+            var expectedValue = false;
+            var parameter = new GuideParameters();
+
+            //Act
+            var assertedValue = parameter.Equals(null);
+
+            //Assert
+            Assert.AreEqual(expectedValue, assertedValue);
+        }
     }
 }

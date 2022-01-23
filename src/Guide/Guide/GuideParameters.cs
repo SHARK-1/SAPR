@@ -247,18 +247,5 @@ namespace Guide
                    _attachmentStrokeWidth == other._attachmentStrokeWidth &&
                    _holeDiameter == other._holeDiameter;
         }
-        /// <summary>
-        /// Сравнение с другим объектом
-        /// </summary>
-        /// <param name="obj">Объект, с которым сравнивают</param>
-        /// <returns></returns>
-        public override bool Equals(object obj)
-        {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != this.GetType()) return false;
-
-            return Equals((GuideParameters)obj);
-        }
     }
 }

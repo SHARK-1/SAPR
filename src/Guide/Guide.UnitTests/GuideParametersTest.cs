@@ -133,5 +133,24 @@ namespace Guide.UnitTests
             Assert.AreEqual(expectedValue, parameter.RangeDictionary[
                 ParametersEnum.AttachmentStrokeLength].Min);
         }
+        [TestCase(true,true, TestName = "Equals с самим собой, позитив")]
+        [TestCase(false, true, TestName = "Equals с другими параметрами, позитив")]
+        [TestCase(true, false,TestName = "Equals, негатив")]
+        public void TestEquals(bool sameParameters, bool equal)
+        {
+            //Arrange
+            var expectedValue = equal;
+            var parameter = new GuideParameters();
+            var comparisonParameter = new GuideParameters();
+            if (!equal) comparisonParameter.GuideLength = 100;
+
+            //Act
+            var assertedValue = sameParameters
+                ? parameter.Equals(comparisonParameter)
+                : parameter.Equals(parameter);
+
+            //Assert
+            Assert.AreEqual(expectedValue, assertedValue);
+        }
     }
 }

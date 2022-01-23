@@ -13,7 +13,8 @@ namespace Guide
         /// Строка, хронящая путь до файла с сохранением
         /// </summary>
         public static readonly string _directoryPath = 
-            Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)
+            Environment.GetFolderPath(
+                Environment.SpecialFolder.ApplicationData)
             + @"\Guide\";
 
         /// <summary>
@@ -25,7 +26,8 @@ namespace Guide
         /// </summary>
         /// <param name="guideParameters">Объект с параметрами</param>
         /// <param name="path">Полный пть до файла</param>
-        public static void SaveFile(GuideParameters guideParameters, string path)
+        public static void SaveFile(
+            GuideParameters guideParameters, string path)
         {
             var directoryInfo = new DirectoryInfo(path);
             if (!directoryInfo.Exists)
@@ -34,7 +36,8 @@ namespace Guide
             }
             string parameters = JsonConvert.SerializeObject(guideParameters);
 
-            using (StreamWriter writer = new StreamWriter(Path.Combine(path, _fileName)))
+            using (StreamWriter writer = 
+                new StreamWriter(Path.Combine(path, _fileName)))
             {
                 writer.Write(parameters);
             }
@@ -52,17 +55,21 @@ namespace Guide
                 return parameters;
             }
             JsonSerializer serializer = new JsonSerializer();
-            //TODO: RSDN
+            //TODO: RSDN+
             using (StreamReader streamReader = new StreamReader(path))
-            using (JsonReader jsonReader = new JsonTextReader(streamReader))
             {
-                try
+                using (JsonReader jsonReader = 
+                    new JsonTextReader(streamReader))
                 {
-                    parameters = serializer.Deserialize<GuideParameters>(jsonReader);
-                }
-                catch
-                {
-                    return parameters;
+                    try
+                    {
+                        parameters = serializer.
+                            Deserialize<GuideParameters>(jsonReader);
+                    }
+                    catch
+                    {
+                        return parameters;
+                    }
                 }
             }
             return parameters;

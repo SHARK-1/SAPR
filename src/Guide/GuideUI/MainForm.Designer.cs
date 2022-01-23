@@ -68,8 +68,8 @@ namespace GuideUI
             this.GuideLengthTextBox.Size = new System.Drawing.Size(93, 26);
             this.GuideLengthTextBox.TabIndex = 0;
             this.GuideLengthTextBox.Text = "50";
-            this.GuideLengthTextBox.Enter += new System.EventHandler(this.GuideLengthTextBox_Enter);
-            this.GuideLengthTextBox.Leave += new System.EventHandler(this.GuideLengthTextBox_Leave);
+            this.GuideLengthTextBox.Enter += new System.EventHandler(this.TextBox_Enter);
+            this.GuideLengthTextBox.Leave += new System.EventHandler(this.TextBox_Leave);
             // 
             // GuideWidthTextBox
             // 
@@ -80,8 +80,8 @@ namespace GuideUI
             this.GuideWidthTextBox.Size = new System.Drawing.Size(93, 26);
             this.GuideWidthTextBox.TabIndex = 1;
             this.GuideWidthTextBox.Text = "10";
-            this.GuideWidthTextBox.Enter += new System.EventHandler(this.GuideWidthTextBox_Enter);
-            this.GuideWidthTextBox.Leave += new System.EventHandler(this.GuideWidthTextBox_Leave);
+            this.GuideWidthTextBox.Enter += new System.EventHandler(this.TextBox_Enter);
+            this.GuideWidthTextBox.Leave += new System.EventHandler(this.TextBox_Leave);
             // 
             // GuideDepthTextBox
             // 
@@ -91,8 +91,8 @@ namespace GuideUI
             this.GuideDepthTextBox.Size = new System.Drawing.Size(93, 26);
             this.GuideDepthTextBox.TabIndex = 2;
             this.GuideDepthTextBox.Text = "5";
-            this.GuideDepthTextBox.Enter += new System.EventHandler(this.GuideDepthTextBox_Enter);
-            this.GuideDepthTextBox.Leave += new System.EventHandler(this.GuideDepthTextBox_Leave);
+            this.GuideDepthTextBox.Enter += new System.EventHandler(this.TextBox_Enter);
+            this.GuideDepthTextBox.Leave += new System.EventHandler(this.TextBox_Leave);
             // 
             // HoleDiameterTextBox
             // 
@@ -103,8 +103,8 @@ namespace GuideUI
             this.HoleDiameterTextBox.Size = new System.Drawing.Size(93, 26);
             this.HoleDiameterTextBox.TabIndex = 5;
             this.HoleDiameterTextBox.Text = "2";
-            this.HoleDiameterTextBox.Enter += new System.EventHandler(this.HoleDiameterTextBox_Enter);
-            this.HoleDiameterTextBox.Leave += new System.EventHandler(this.HoleDiameterTextBox_Leave);
+            this.HoleDiameterTextBox.Enter += new System.EventHandler(this.TextBox_Enter);
+            this.HoleDiameterTextBox.Leave += new System.EventHandler(this.TextBox_Leave);
             // 
             // AttachmentStrokeWidthTextBox
             // 
@@ -115,8 +115,8 @@ namespace GuideUI
             this.AttachmentStrokeWidthTextBox.Size = new System.Drawing.Size(93, 26);
             this.AttachmentStrokeWidthTextBox.TabIndex = 4;
             this.AttachmentStrokeWidthTextBox.Text = "3";
-            this.AttachmentStrokeWidthTextBox.Enter += new System.EventHandler(this.AttachmentStrokeWidthTextBox_Enter);
-            this.AttachmentStrokeWidthTextBox.Leave += new System.EventHandler(this.AttachmentStrokeWidthTextBox_Leave);
+            this.AttachmentStrokeWidthTextBox.Enter += new System.EventHandler(this.TextBox_Enter);
+            this.AttachmentStrokeWidthTextBox.Leave += new System.EventHandler(this.TextBox_Leave);
             // 
             // AttachmentStrokeLengthTextBox
             // 
@@ -126,8 +126,8 @@ namespace GuideUI
             this.AttachmentStrokeLengthTextBox.Size = new System.Drawing.Size(93, 26);
             this.AttachmentStrokeLengthTextBox.TabIndex = 3;
             this.AttachmentStrokeLengthTextBox.Text = "15";
-            this.AttachmentStrokeLengthTextBox.Enter += new System.EventHandler(this.AttachmentStrokeLengthTextBox_Enter);
-            this.AttachmentStrokeLengthTextBox.Leave += new System.EventHandler(this.AttachmentStrokeLengthTextBox_Leave);
+            this.AttachmentStrokeLengthTextBox.Enter += new System.EventHandler(this.TextBox_Enter);
+            this.AttachmentStrokeLengthTextBox.Leave += new System.EventHandler(this.TextBox_Leave);
             // 
             // GuideAngleTextBox
             // 
@@ -138,8 +138,8 @@ namespace GuideUI
             this.GuideAngleTextBox.Size = new System.Drawing.Size(93, 26);
             this.GuideAngleTextBox.TabIndex = 6;
             this.GuideAngleTextBox.Text = "65";
-            this.GuideAngleTextBox.Enter += new System.EventHandler(this.GuideAngleTextBox_Enter);
-            this.GuideAngleTextBox.Leave += new System.EventHandler(this.GuideAngleTextBox_Leave);
+            this.GuideAngleTextBox.Enter += new System.EventHandler(this.TextBox_Enter);
+            this.GuideAngleTextBox.Leave += new System.EventHandler(this.TextBox_Leave);
             // 
             // BuildButton
             // 

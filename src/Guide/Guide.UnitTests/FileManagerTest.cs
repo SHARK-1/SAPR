@@ -12,14 +12,17 @@ namespace Guide.UnitTests
             var expectedParameters = new GuideParameters();
             expectedParameters.GuideAngle = 180;
             //Act
-            var actualParameters = FileManager.LoadFile(@"TestData\CorrectGuideParameters.json");
+            var actualParameters = 
+                FileManager.LoadFile(@"TestData\CorrectGuideParameters.json");
 
             //Assert
             Assert.AreEqual(expectedParameters, actualParameters);
         }
 
-        [TestCase(@"TestData\CorruptedGuideParameters.json", TestName = "Загрузка параметров, исключение")]
-        [TestCase(@"TestData\NonExistentParameters.json", TestName = "Загрузка параметров, файл не существует")]
+        [TestCase(@"TestData\CorruptedGuideParameters.json", 
+            TestName = "Загрузка параметров, исключение")]
+        [TestCase(@"TestData\NonExistentParameters.json", 
+            TestName = "Загрузка параметров, файл не существует")]
         public void FileManager_LoadTest_Exception(string path)
         {
             //Setup
@@ -45,7 +48,8 @@ namespace Guide.UnitTests
             FileManager.SaveFile(expectedParameters, @"Output");
             //Assert
             var actual = File.ReadAllText(@"Output\GuideParameters.json");
-            var expected = File.ReadAllText(@"TestData\CorrectGuideParameters.json");
+            var expected = 
+                File.ReadAllText(@"TestData\CorrectGuideParameters.json");
 
             Assert.AreEqual(expected, actual);
         }

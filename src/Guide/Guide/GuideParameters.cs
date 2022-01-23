@@ -80,7 +80,8 @@ namespace Guide
                 }
                 else
                 {
-                    CallException(value, range.Min, range.Max, "длина направляющей");
+                    CallException(value, range.Min, range.Max,
+                        "длина направляющей");
                 }
             }
         }
@@ -101,7 +102,8 @@ namespace Guide
                 }
                 else
                 {
-                    CallException(value, range.Min, range.Max, "ширина направляющеей");
+                    CallException(value, range.Min, range.Max, 
+                        "ширина направляющеей");
                 }
             }
         }
@@ -119,7 +121,8 @@ namespace Guide
                 }
                 else
                 {
-                    CallException(value, range.Min, range.Max, "толщина направляющей");
+                    CallException(value, range.Min, range.Max,
+                        "толщина направляющей");
                 }
             }
         }
@@ -137,7 +140,8 @@ namespace Guide
                 }
                 else
                 {
-                    CallException(value, range.Min, range.Max, "Угол наклона направляющей");
+                    CallException(value, range.Min, range.Max,
+                        "Угол наклона направляющей");
                 }
             }
         }
@@ -155,7 +159,8 @@ namespace Guide
                 }
                 else
                 {
-                    CallException(value, range.Min, range.Max, "диаметр отверстия");
+                    CallException(value, range.Min, range.Max,
+                        "диаметр отверстия");
                 }
             }
         }
@@ -166,14 +171,16 @@ namespace Guide
         {
             get { return _attachmentStrokeLength; }
             set {
-                Range range = _rangeDictionary[ParametersEnum.AttachmentStrokeLength];
+                Range range = 
+                    _rangeDictionary[ParametersEnum.AttachmentStrokeLength];
                 if (Validator.ValidateRange(value, range.Min, range.Max))
                 {
                     _attachmentStrokeLength = value;
                 }
                 else
                 {
-                    CallException(value, range.Min, range.Max, "длина хода крепления");
+                    CallException(value, range.Min, range.Max, 
+                        "длина хода крепления");
                 }
             }
         }
@@ -184,16 +191,19 @@ namespace Guide
         {
             get { return _attachmentStrokeWidth; }
             set {
-                Range range = _rangeDictionary[ParametersEnum.AttachmentStrokeWidth];
+                Range range = 
+                    _rangeDictionary[ParametersEnum.AttachmentStrokeWidth];
                 if (Validator.ValidateRange(value, range.Min, range.Max))
                 {
                     _attachmentStrokeWidth = value;
                     //TODO: RSDN
-                    _rangeDictionary[ParametersEnum.AttachmentStrokeLength] = new Range(5 * _attachmentStrokeWidth, 90);
+                    _rangeDictionary[ParametersEnum.AttachmentStrokeLength] =
+                        new Range(5 * _attachmentStrokeWidth, 90);
                 }
                 else
                 {
-                    CallException(value, range.Min, range.Max,"ширина хода крепления");
+                    CallException(value, range.Min, range.Max,
+                        "ширина хода крепления");
                 }
             }
         }
@@ -201,13 +211,23 @@ namespace Guide
         /// <summary>
         /// Свойство для максимальных и минимальных значения параметров
         /// </summary>
-        public Dictionary<ParametersEnum, Range> RangeDictionary => _rangeDictionary;
+        public Dictionary<ParametersEnum, Range> RangeDictionary =>
+            _rangeDictionary;
 
-        //TODO: XML
-        private void CallException(double value,double min,double max,string parameterName)
+        //TODO: XML+
+        /// <summary>
+        /// Вызов исключения с сообщением об ошибке
+        /// </summary>
+        /// <param name="value">значение параметра</param>
+        /// <param name="min">Минимальное значение</param>
+        /// <param name="max">Максимальное значение</param>
+        /// <param name="parameterName">Имя параметра</param>
+        private void CallException(
+            double value,double min,double max,string parameterName)
         {
-            throw new ArgumentException($"В поле \"{parameterName}\" введено {value}.\n" +
-                        $"Должно быть от {min} до {max}.");
+            throw new ArgumentException(
+                $"В поле \"{parameterName}\" введено {value}.\n" +
+                $"Должно быть от {min} до {max}.");
         }
         /// <summary>
         /// Сравнение с другим объектом параметров

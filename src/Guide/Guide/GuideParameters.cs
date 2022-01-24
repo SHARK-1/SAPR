@@ -81,7 +81,6 @@ namespace Guide
                 }
                 CallException(value, range.Min, range.Max,
                     "длина направляющей");
-
             }
         }
         /// <summary>
@@ -102,7 +101,6 @@ namespace Guide
                 }
                 CallException(value, range.Min, range.Max,
                     "ширина направляющеей");
-
             }
         }
         /// <summary>
@@ -121,7 +119,6 @@ namespace Guide
                 }
                 CallException(value, range.Min, range.Max,
                     "толщина направляющей");
-
             }
         }
         /// <summary>
@@ -140,7 +137,6 @@ namespace Guide
                 }
                 CallException(value, range.Min, range.Max,
                     "Угол наклона направляющей");
-
             }
         }
         /// <summary>
@@ -159,7 +155,6 @@ namespace Guide
                 }
                 CallException(value, range.Min, range.Max,
                     "диаметр отверстия");
-
             }
         }
         /// <summary>
@@ -201,7 +196,6 @@ namespace Guide
                 }
                 CallException(value, range.Min, range.Max,
                     "ширина хода крепления");
-
             }
         }
 

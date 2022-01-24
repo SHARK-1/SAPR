@@ -3,10 +3,10 @@ using System.Collections.Generic;
 
 namespace Guide
 {
-     /// <summary>
-     /// Класс хранящий параметры направляющей
-     /// </summary>
-    public class GuideParameters:IEquatable<GuideParameters>
+    /// <summary>
+    /// Класс хранящий параметры направляющей
+    /// </summary>
+    public class GuideParameters : IEquatable<GuideParameters>
     {
         /// <summary>
         /// Длинна направляющей
@@ -40,7 +40,7 @@ namespace Guide
         /// Словарь хранящий минимальные и максимальные значения параметров
         /// </summary>
         private readonly Dictionary<ParameterNames, Range> _rangeDictionary;
-        
+
         /// <summary>
         /// Создание экземпляра GuideParameters c значениями по умолчанию.
         /// </summary>
@@ -77,12 +77,11 @@ namespace Guide
                 if (Validator.ValidateRange(value, range.Min, range.Max))
                 {
                     _guideLength = value;
+                    return;
                 }
-                else
-                {
-                    CallException(value, range.Min, range.Max,
-                        "длина направляющей");
-                }
+                CallException(value, range.Min, range.Max,
+                    "длина направляющей");
+
             }
         }
         /// <summary>
@@ -91,7 +90,7 @@ namespace Guide
         public double GuideWidth
         {
             get { return _guideWidth; }
-            set 
+            set
             {
                 Range range = _rangeDictionary[ParameterNames.GuideWidth];
                 if (Validator.ValidateRange(value, range.Min, range.Max))
@@ -99,12 +98,11 @@ namespace Guide
                     _guideWidth = value;
                     _rangeDictionary[ParameterNames.AttachmentStrokeWidth] =
                         new Range(0.3 * _guideWidth, 0.5 * _guideWidth);
+                    return;
                 }
-                else
-                {
-                    CallException(value, range.Min, range.Max, 
-                        "ширина направляющеей");
-                }
+                CallException(value, range.Min, range.Max,
+                    "ширина направляющеей");
+
             }
         }
         /// <summary>
@@ -113,17 +111,17 @@ namespace Guide
         public double GuideDepth
         {
             get { return _guideDepth; }
-            set {
+            set
+            {
                 Range range = _rangeDictionary[ParameterNames.GuideDepth];
                 if (Validator.ValidateRange(value, range.Min, range.Max))
                 {
                     _guideDepth = value;
+                    return;
                 }
-                else
-                {
-                    CallException(value, range.Min, range.Max,
-                        "толщина направляющей");
-                }
+                CallException(value, range.Min, range.Max,
+                    "толщина направляющей");
+
             }
         }
         /// <summary>
@@ -132,17 +130,17 @@ namespace Guide
         public double GuideAngle
         {
             get { return _guideAngle; }
-            set {
+            set
+            {
                 Range range = _rangeDictionary[ParameterNames.GuideAngle];
                 if (Validator.ValidateRange(value, range.Min, range.Max))
                 {
                     _guideAngle = value;
+                    return;
                 }
-                else
-                {
-                    CallException(value, range.Min, range.Max,
-                        "Угол наклона направляющей");
-                }
+                CallException(value, range.Min, range.Max,
+                    "Угол наклона направляющей");
+
             }
         }
         /// <summary>
@@ -151,17 +149,17 @@ namespace Guide
         public double HoleDiameter
         {
             get { return _holeDiameter; }
-            set {
+            set
+            {
                 Range range = _rangeDictionary[ParameterNames.HoleDiameter];
                 if (Validator.ValidateRange(value, range.Min, range.Max))
                 {
                     _holeDiameter = value;
+                    return;
                 }
-                else
-                {
-                    CallException(value, range.Min, range.Max,
-                        "диаметр отверстия");
-                }
+                CallException(value, range.Min, range.Max,
+                    "диаметр отверстия");
+
             }
         }
         /// <summary>
@@ -170,18 +168,17 @@ namespace Guide
         public double AttachmentStrokeLength
         {
             get { return _attachmentStrokeLength; }
-            set {
-                Range range = 
+            set
+            {
+                Range range =
                     _rangeDictionary[ParameterNames.AttachmentStrokeLength];
                 if (Validator.ValidateRange(value, range.Min, range.Max))
                 {
                     _attachmentStrokeLength = value;
+                    return;
                 }
-                else
-                {
-                    CallException(value, range.Min, range.Max, 
-                        "длина хода крепления");
-                }
+                CallException(value, range.Min, range.Max,
+                    "длина хода крепления");
             }
         }
         /// <summary>
@@ -190,8 +187,9 @@ namespace Guide
         public double AttachmentStrokeWidth
         {
             get { return _attachmentStrokeWidth; }
-            set {
-                Range range = 
+            set
+            {
+                Range range =
                     _rangeDictionary[ParameterNames.AttachmentStrokeWidth];
                 if (Validator.ValidateRange(value, range.Min, range.Max))
                 {
@@ -199,12 +197,11 @@ namespace Guide
                     //TODO: RSDN
                     _rangeDictionary[ParameterNames.AttachmentStrokeLength] =
                         new Range(5 * _attachmentStrokeWidth, 90);
+                    return;
                 }
-                else
-                {
-                    CallException(value, range.Min, range.Max,
-                        "ширина хода крепления");
-                }
+                CallException(value, range.Min, range.Max,
+                    "ширина хода крепления");
+
             }
         }
 
@@ -223,7 +220,7 @@ namespace Guide
         /// <param name="max">Максимальное значение</param>
         /// <param name="parameterName">Имя параметра</param>
         private void CallException(
-            double value,double min,double max,string parameterName)
+            double value, double min, double max, string parameterName)
         {
             throw new ArgumentException(
                 $"В поле \"{parameterName}\" введено {value}.\n" +

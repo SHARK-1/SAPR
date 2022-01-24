@@ -39,7 +39,7 @@ namespace Guide
         /// <summary>
         /// Словарь хранящий минимальные и максимальные значения параметров
         /// </summary>
-        private readonly Dictionary<ParametersEnum, Range> _rangeDictionary;
+        private readonly Dictionary<ParameterNames, Range> _rangeDictionary;
         
         /// <summary>
         /// Создание экземпляра GuideParameters c значениями по умолчанию.
@@ -53,15 +53,15 @@ namespace Guide
             _holeDiameter = 2;
             _attachmentStrokeLength = 15;
             _attachmentStrokeWidth = 3;
-            _rangeDictionary = new Dictionary<ParametersEnum, Range>
+            _rangeDictionary = new Dictionary<ParameterNames, Range>
             {
-                { ParametersEnum.GuideLength, new Range(50, 150) },
-                { ParametersEnum.GuideWidth, new Range(10, 30) },
-                { ParametersEnum.GuideDepth, new Range(5, 20) },
-                { ParametersEnum.GuideAngle, new Range(65, 270) },
-                { ParametersEnum.HoleDiameter, new Range(2, 20) },
-                { ParametersEnum.AttachmentStrokeLength, new Range(15, 90) },
-                { ParametersEnum.AttachmentStrokeWidth, new Range(3, 5) }
+                { ParameterNames.GuideLength, new Range(50, 150) },
+                { ParameterNames.GuideWidth, new Range(10, 30) },
+                { ParameterNames.GuideDepth, new Range(5, 20) },
+                { ParameterNames.GuideAngle, new Range(65, 270) },
+                { ParameterNames.HoleDiameter, new Range(2, 20) },
+                { ParameterNames.AttachmentStrokeLength, new Range(15, 90) },
+                { ParameterNames.AttachmentStrokeWidth, new Range(3, 5) }
             };
         }
 
@@ -73,7 +73,7 @@ namespace Guide
             get { return _guideLength; }
             set
             {
-                Range range = _rangeDictionary[ParametersEnum.GuideLength];
+                Range range = _rangeDictionary[ParameterNames.GuideLength];
                 if (Validator.ValidateRange(value, range.Min, range.Max))
                 {
                     _guideLength = value;
@@ -93,11 +93,11 @@ namespace Guide
             get { return _guideWidth; }
             set 
             {
-                Range range = _rangeDictionary[ParametersEnum.GuideWidth];
+                Range range = _rangeDictionary[ParameterNames.GuideWidth];
                 if (Validator.ValidateRange(value, range.Min, range.Max))
                 {
                     _guideWidth = value;
-                    _rangeDictionary[ParametersEnum.AttachmentStrokeWidth] =
+                    _rangeDictionary[ParameterNames.AttachmentStrokeWidth] =
                         new Range(0.3 * _guideWidth, 0.5 * _guideWidth);
                 }
                 else
@@ -114,7 +114,7 @@ namespace Guide
         {
             get { return _guideDepth; }
             set {
-                Range range = _rangeDictionary[ParametersEnum.GuideDepth];
+                Range range = _rangeDictionary[ParameterNames.GuideDepth];
                 if (Validator.ValidateRange(value, range.Min, range.Max))
                 {
                     _guideDepth = value;
@@ -133,7 +133,7 @@ namespace Guide
         {
             get { return _guideAngle; }
             set {
-                Range range = _rangeDictionary[ParametersEnum.GuideAngle];
+                Range range = _rangeDictionary[ParameterNames.GuideAngle];
                 if (Validator.ValidateRange(value, range.Min, range.Max))
                 {
                     _guideAngle = value;
@@ -152,7 +152,7 @@ namespace Guide
         {
             get { return _holeDiameter; }
             set {
-                Range range = _rangeDictionary[ParametersEnum.HoleDiameter];
+                Range range = _rangeDictionary[ParameterNames.HoleDiameter];
                 if (Validator.ValidateRange(value, range.Min, range.Max))
                 {
                     _holeDiameter = value;
@@ -172,7 +172,7 @@ namespace Guide
             get { return _attachmentStrokeLength; }
             set {
                 Range range = 
-                    _rangeDictionary[ParametersEnum.AttachmentStrokeLength];
+                    _rangeDictionary[ParameterNames.AttachmentStrokeLength];
                 if (Validator.ValidateRange(value, range.Min, range.Max))
                 {
                     _attachmentStrokeLength = value;
@@ -192,12 +192,12 @@ namespace Guide
             get { return _attachmentStrokeWidth; }
             set {
                 Range range = 
-                    _rangeDictionary[ParametersEnum.AttachmentStrokeWidth];
+                    _rangeDictionary[ParameterNames.AttachmentStrokeWidth];
                 if (Validator.ValidateRange(value, range.Min, range.Max))
                 {
                     _attachmentStrokeWidth = value;
                     //TODO: RSDN
-                    _rangeDictionary[ParametersEnum.AttachmentStrokeLength] =
+                    _rangeDictionary[ParameterNames.AttachmentStrokeLength] =
                         new Range(5 * _attachmentStrokeWidth, 90);
                 }
                 else
@@ -211,7 +211,7 @@ namespace Guide
         /// <summary>
         /// Свойство для максимальных и минимальных значения параметров
         /// </summary>
-        public Dictionary<ParametersEnum, Range> RangeDictionary =>
+        public Dictionary<ParameterNames, Range> RangeDictionary =>
             _rangeDictionary;
 
         //TODO: XML+

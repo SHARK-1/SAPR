@@ -4,7 +4,7 @@
     /// Перечисление параметров,
     /// используется в словаре максимальных и минимальных значений параметров
     /// </summary>
-    public enum ParametersEnum
+    public enum ParameterNames
     {
         None,
         GuideLength,

@@ -9,22 +9,22 @@ namespace Guide.UnitTests
     public class GuideParametersTest
     {
         //TODO: RSDN
-        [TestCase(ParametersEnum.GuideLength,60,
+        [TestCase(ParameterNames.GuideLength,60,
             TestName = "Длинна направляющей, позитив")]
-        [TestCase(ParametersEnum.GuideWidth, 11,
+        [TestCase(ParameterNames.GuideWidth, 11,
             TestName = "Ширина направляющей, позитив")]
-        [TestCase(ParametersEnum.GuideDepth, 6,
+        [TestCase(ParameterNames.GuideDepth, 6,
             TestName = "Толщина направляющей, позитив")]
-        [TestCase(ParametersEnum.AttachmentStrokeLength, 16,
+        [TestCase(ParameterNames.AttachmentStrokeLength, 16,
             TestName = "Длинна хода крепления, позитив")]
-        [TestCase(ParametersEnum.AttachmentStrokeWidth, 4,
+        [TestCase(ParameterNames.AttachmentStrokeWidth, 4,
             TestName = "Ширина хода крепления, позитив")]
-        [TestCase(ParametersEnum.HoleDiameter, 3, 
+        [TestCase(ParameterNames.HoleDiameter, 3, 
             TestName = "Диаметр отверстия, позитив")]
-        [TestCase(ParametersEnum.GuideAngle, 100,
+        [TestCase(ParameterNames.GuideAngle, 100,
             TestName = "Угол наклона направляющей, позитив")]
         public void TestSet_CorrectValue(
-            ParametersEnum parametersEnum, double value)
+            ParameterNames ParameterNames, double value)
         {
             //Arrange
             var expectedValue = value;
@@ -32,7 +32,7 @@ namespace Guide.UnitTests
 
             //Act
             var propertyInfo = typeof(GuideParameters).
-                        GetProperty(parametersEnum.ToString());
+                        GetProperty(ParameterNames.ToString());
             propertyInfo.SetValue(parameter, value);
 
             //Assert
@@ -40,36 +40,36 @@ namespace Guide.UnitTests
         }
 
         //TODO: RSDN
-        [TestCase(ParametersEnum.GuideLength, 30, 
+        [TestCase(ParameterNames.GuideLength, 30, 
             TestName = "Длинна направляющей, меньше положенного, исключение")]
-        [TestCase(ParametersEnum.GuideLength, 160,
+        [TestCase(ParameterNames.GuideLength, 160,
             TestName = "Длинна направляющей, больше положенного, исключение")]
-        [TestCase(ParametersEnum.GuideWidth, 5, 
+        [TestCase(ParameterNames.GuideWidth, 5, 
             TestName = "Ширина направляющей, меньше положенного, исключение")]
-        [TestCase(ParametersEnum.GuideWidth, 60, 
+        [TestCase(ParameterNames.GuideWidth, 60, 
             TestName = "Ширина направляющей, больше положенного, исключение")]
-        [TestCase(ParametersEnum.GuideDepth, 1,
+        [TestCase(ParameterNames.GuideDepth, 1,
             TestName = "Толщина направляющей, меньше положенного, исключение")]
-        [TestCase(ParametersEnum.GuideDepth, 60,
+        [TestCase(ParameterNames.GuideDepth, 60,
             TestName = "Толщина направляющей, больше положенного, исключение")]
-        [TestCase(ParametersEnum.AttachmentStrokeLength, 1,
+        [TestCase(ParameterNames.AttachmentStrokeLength, 1,
             TestName = "Длинна хода крепления, меньше положенного, исключение")]
-        [TestCase(ParametersEnum.AttachmentStrokeLength, 100, 
+        [TestCase(ParameterNames.AttachmentStrokeLength, 100, 
             TestName = "Длинна хода крепления, больше положенного, исключение")]
-        [TestCase(ParametersEnum.AttachmentStrokeWidth, 1, 
+        [TestCase(ParameterNames.AttachmentStrokeWidth, 1, 
             TestName = "Ширина хода крепления, меньше положенного, исключение")]
-        [TestCase(ParametersEnum.AttachmentStrokeWidth, 60, 
+        [TestCase(ParameterNames.AttachmentStrokeWidth, 60, 
             TestName = "Ширина хода крепления, больше положенного, исключение")]
-        [TestCase(ParametersEnum.HoleDiameter, 1,
+        [TestCase(ParameterNames.HoleDiameter, 1,
             TestName = "Диаметр отверстия, меньше положенного, исключение")]
-        [TestCase(ParametersEnum.HoleDiameter, 60,
+        [TestCase(ParameterNames.HoleDiameter, 60,
             TestName = "Диаметр отверстия, больше положенного, исключение")]
-        [TestCase(ParametersEnum.GuideAngle, 60,
+        [TestCase(ParameterNames.GuideAngle, 60,
             TestName = "Угол наклона направляющей, меньше положенного, исключение")]
-        [TestCase(ParametersEnum.GuideAngle, 300,
+        [TestCase(ParameterNames.GuideAngle, 300,
             TestName = "Угол наклона направляющей, больше положенного, исключение")]
         public void TestSet_IncorrectValue(
-            ParametersEnum parametersEnum, double value)
+            ParameterNames ParameterNames, double value)
         {
             //Arrange
             var expectedValue = value;
@@ -80,7 +80,7 @@ namespace Guide.UnitTests
          {
              //Act
              var propertyInfo = typeof(GuideParameters).
-                  GetProperty(parametersEnum.ToString());
+                  GetProperty(ParameterNames.ToString());
              propertyInfo.SetValue(parameter, value);
          });
         }
@@ -109,9 +109,9 @@ namespace Guide.UnitTests
             //Assert
             var assertedValue = isMaxBorder
                 ? parameter.RangeDictionary[
-                    ParametersEnum.AttachmentStrokeWidth].Max
+                    ParameterNames.AttachmentStrokeWidth].Max
                 : parameter.RangeDictionary[
-                    ParametersEnum.AttachmentStrokeWidth].Min;
+                    ParameterNames.AttachmentStrokeWidth].Min;
             Assert.AreEqual(expectedValue, assertedValue);
         }
 
@@ -131,7 +131,7 @@ namespace Guide.UnitTests
             //TODO: RSDN+
             //Assert
             Assert.AreEqual(expectedValue, parameter.RangeDictionary[
-                ParametersEnum.AttachmentStrokeLength].Min);
+                ParameterNames.AttachmentStrokeLength].Min);
         }
         [TestCase(true,true, TestName = "Equals с самим собой, позитив")]
         [TestCase(false, true, TestName = "Equals с другими параметрами, позитив")]

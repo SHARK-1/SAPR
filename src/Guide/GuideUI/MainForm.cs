@@ -23,17 +23,17 @@ namespace GuideUI
         /// Словарь для хранения элеменов Label, 
         /// с записями максимальных и минимальных значений
         /// </summary>
-        private readonly Dictionary<ParametersEnum, Label>
+        private readonly Dictionary<ParameterNames, Label>
             _labelDictionary;
         /// <summary>
         /// Словарь для хранения элеменов TextBox с парапетрами
         /// </summary>
-        private readonly Dictionary<ParametersEnum, TextBox>
+        private readonly Dictionary<ParameterNames, TextBox>
             _textBoxDictionary;
         /// <summary>
         /// Словарь для хранения изображений параметров
         /// </summary>
-        private readonly Dictionary<ParametersEnum, Bitmap>
+        private readonly Dictionary<ParameterNames, Bitmap>
             _imageDictionary;
         /// <summary>
         /// Форма приложения
@@ -46,45 +46,45 @@ namespace GuideUI
                 + FileManager._fileName;
             _guideParameters = FileManager.LoadFile(path);
             ValidateAllValues();
-            _labelDictionary = new Dictionary<ParametersEnum, Label>
+            _labelDictionary = new Dictionary<ParameterNames, Label>
             {
-                { ParametersEnum.AttachmentStrokeLength,
+                { ParameterNames.AttachmentStrokeLength,
                     AttachmentStrokeLengthLabel },
-                { ParametersEnum.AttachmentStrokeWidth,
+                { ParameterNames.AttachmentStrokeWidth,
                     AttachmentStrokeWidthLabel },
-                { ParametersEnum.GuideLength, GuideLengthLabel },
-                { ParametersEnum.GuideWidth, GuideWidthLabel },
-                { ParametersEnum.GuideDepth, GuideDepthLabel },
-                { ParametersEnum.GuideAngle,GuideAngleLabel },
-                { ParametersEnum.HoleDiameter, HoleDiameterLabel }
+                { ParameterNames.GuideLength, GuideLengthLabel },
+                { ParameterNames.GuideWidth, GuideWidthLabel },
+                { ParameterNames.GuideDepth, GuideDepthLabel },
+                { ParameterNames.GuideAngle,GuideAngleLabel },
+                { ParameterNames.HoleDiameter, HoleDiameterLabel }
             };
-            _textBoxDictionary = new Dictionary<ParametersEnum, TextBox>
+            _textBoxDictionary = new Dictionary<ParameterNames, TextBox>
             {
-                { ParametersEnum.AttachmentStrokeLength,
+                { ParameterNames.AttachmentStrokeLength,
                     AttachmentStrokeLengthTextBox },
-                { ParametersEnum.AttachmentStrokeWidth,
+                { ParameterNames.AttachmentStrokeWidth,
                     AttachmentStrokeWidthTextBox },
-                { ParametersEnum.GuideLength, GuideLengthTextBox },
-                { ParametersEnum.GuideWidth, GuideWidthTextBox },
-                { ParametersEnum.GuideDepth, GuideDepthTextBox },
-                { ParametersEnum.GuideAngle,GuideAngleTextBox },
-                { ParametersEnum.HoleDiameter, HoleDiameterTextBox }
+                { ParameterNames.GuideLength, GuideLengthTextBox },
+                { ParameterNames.GuideWidth, GuideWidthTextBox },
+                { ParameterNames.GuideDepth, GuideDepthTextBox },
+                { ParameterNames.GuideAngle,GuideAngleTextBox },
+                { ParameterNames.HoleDiameter, HoleDiameterTextBox }
             };
-            _imageDictionary = new Dictionary<ParametersEnum, Bitmap>
+            _imageDictionary = new Dictionary<ParameterNames, Bitmap>
             {
-                {ParametersEnum.GuideLength,
+                {ParameterNames.GuideLength,
                     global::GuideUI.Properties.Resources._1},
-                {ParametersEnum.GuideWidth,
+                {ParameterNames.GuideWidth,
                     global::GuideUI.Properties.Resources._2},
-                {ParametersEnum.GuideDepth,
+                {ParameterNames.GuideDepth,
                     global::GuideUI.Properties.Resources._3},
-                {ParametersEnum.GuideAngle,
+                {ParameterNames.GuideAngle,
                     global::GuideUI.Properties.Resources._7},
-                {ParametersEnum.AttachmentStrokeLength,
+                {ParameterNames.AttachmentStrokeLength,
                     global::GuideUI.Properties.Resources._4},
-                {ParametersEnum.AttachmentStrokeWidth,
+                {ParameterNames.AttachmentStrokeWidth,
                     global::GuideUI.Properties.Resources._5},
-                {ParametersEnum.HoleDiameter,
+                {ParameterNames.HoleDiameter,
                     global::GuideUI.Properties.Resources._6},
             };
             LoadParametersToForm();
@@ -111,8 +111,8 @@ namespace GuideUI
         /// Имя зависимого свойства из GuideParameters</param>
         private void CheckValueInTextBox(
             TextBox textBox,
-            ParametersEnum basicParameter,
-            ParametersEnum dependedParameter=ParametersEnum.None)
+            ParameterNames basicParameter,
+            ParameterNames dependedParameter=ParameterNames.None)
         {
             try
             {
@@ -121,7 +121,7 @@ namespace GuideUI
                     GetProperty(basicParameter.ToString());
                 propertyInfo.SetValue(_guideParameters, value);
                 textBox.BackColor = Color.White;
-                if (dependedParameter!=ParametersEnum.None)
+                if (dependedParameter!=ParameterNames.None)
                 {
                     Range range =
                         _guideParameters.RangeDictionary[dependedParameter];
@@ -182,7 +182,7 @@ namespace GuideUI
         private void LoadParametersToForm()
         {
             var ranges = _guideParameters.RangeDictionary;
-            foreach (ParametersEnum parameterName 
+            foreach (ParameterNames parameterName 
                 in _textBoxDictionary.Keys)
             {
                 var propertyInfo = typeof(GuideParameters).
@@ -191,7 +191,7 @@ namespace GuideUI
                     propertyInfo.GetValue(_guideParameters).ToString();
                 Range range = ranges[parameterName];
                 
-                var stringUnit = parameterName == ParametersEnum.GuideAngle 
+                var stringUnit = parameterName == ParameterNames.GuideAngle 
                         ? "°"
                         : "мм";
                 _labelDictionary[parameterName].Text =

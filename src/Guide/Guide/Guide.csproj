@@ -46,7 +46,7 @@
   <ItemGroup>
     <Compile Include="FileManager.cs" />
     <Compile Include="GuideParameters.cs" />
-    <Compile Include="ParametersEnum.cs" />
+    <Compile Include="ParameterNames.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Range.cs" />
     <Compile Include="Validator.cs" />

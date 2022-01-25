@@ -12,7 +12,7 @@ namespace Guide
         /// <summary>
         /// Строка, хронящая путь до файла с сохранением
         /// </summary>
-        public static readonly string _directoryPath = 
+        public static readonly string DirectoryPath = 
             Environment.GetFolderPath(
                 Environment.SpecialFolder.ApplicationData)
             + @"\Guide\";
@@ -20,7 +20,7 @@ namespace Guide
         /// <summary>
         /// Имя файла сохранения
         /// </summary>
-        public static readonly string _fileName = "GuideParameters.json";
+        public static readonly string FileName = "GuideParameters.json";
         /// <summary>
         /// Сохранение параметров
         /// </summary>

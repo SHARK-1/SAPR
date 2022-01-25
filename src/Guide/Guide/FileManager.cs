@@ -47,7 +47,7 @@ namespace Guide
         /// Загрузка параметров из файла
         /// </summary>
         /// <param name="path">Полный путь до файла</param>
-        /// <returns></returns>
+        /// <returns>Объект с параметрами</returns>
         public static GuideParameters LoadFile(string path)
         {   
             var parameters = new GuideParameters();

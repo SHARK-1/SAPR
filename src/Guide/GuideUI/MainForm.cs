@@ -42,8 +42,8 @@ namespace GuideUI
         {
             InitializeComponent();
             _kompasConnector = new KompasConnector();
-            string path = FileManager._directoryPath 
-                + FileManager._fileName;
+            string path = FileManager.DirectoryPath 
+                + FileManager.FileName;
             _guideParameters = FileManager.LoadFile(path);
             ValidateAllValues();
             _labelDictionary = new Dictionary<ParameterNames, Label>
@@ -168,7 +168,9 @@ namespace GuideUI
                 checkParameters.GuideAngle =
                     double.Parse(GuideAngleTextBox.Text);
                 FileManager.SaveFile(
-                    _guideParameters,FileManager._directoryPath);
+                    _guideParameters,
+                    FileManager.DirectoryPath,
+                    FileManager.FileName);
                 BuildButton.Enabled = true;
             }
             catch

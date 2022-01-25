@@ -25,9 +25,9 @@ namespace Guide
         /// Сохранение параметров
         /// </summary>
         /// <param name="guideParameters">Объект с параметрами</param>
-        /// <param name="path">Полный пть до файла</param>
+        /// <param name="path">Полный путь до файла</param>
         public static void SaveFile(
-            GuideParameters guideParameters, string path)
+            GuideParameters guideParameters, string path, string fileName)
         {
             var directoryInfo = new DirectoryInfo(path);
             if (!directoryInfo.Exists)
@@ -37,7 +37,7 @@ namespace Guide
             string parameters = JsonConvert.SerializeObject(guideParameters);
 
             using (StreamWriter writer = 
-                new StreamWriter(Path.Combine(path, _fileName)))
+                new StreamWriter(Path.Combine(path, fileName)))
             {
                 writer.Write(parameters);
             }

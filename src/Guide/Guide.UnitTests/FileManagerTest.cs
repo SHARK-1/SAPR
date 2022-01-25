@@ -45,9 +45,9 @@ namespace Guide.UnitTests
                 Directory.Delete(@"Output", true);
             }
             //Act
-            FileManager.SaveFile(expectedParameters, @"Output");
+            FileManager.SaveFile(expectedParameters, @"Output", FileManager.FileName);
             //Assert
-            var actual = File.ReadAllText(@"Output\GuideParameters.json");
+            var actual = File.ReadAllText(@"Output\"+ FileManager.FileName);
             var expected = 
                 File.ReadAllText(@"TestData\CorrectGuideParameters.json");
 

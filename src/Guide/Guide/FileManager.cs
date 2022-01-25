@@ -25,7 +25,8 @@ namespace Guide
         /// Сохранение параметров
         /// </summary>
         /// <param name="guideParameters">Объект с параметрами</param>
-        /// <param name="path">Полный путь до файла</param>
+        /// <param name="path">Путь до файла</param>
+        /// <param name="fileName">Имя файла</param>
         public static void SaveFile(
             GuideParameters guideParameters, string path, string fileName)
         {

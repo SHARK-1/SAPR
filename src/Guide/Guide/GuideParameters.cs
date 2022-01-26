@@ -189,7 +189,7 @@ namespace Guide
                 if (Validator.ValidateRange(value, range.Min, range.Max))
                 {
                     _attachmentStrokeWidth = value;
-                    //TODO: RSDN
+                    //TODO: RSDN+
                     _rangeDictionary[ParameterNames.AttachmentStrokeLength] =
                         new Range(5 * _attachmentStrokeWidth, 90);
                     return;

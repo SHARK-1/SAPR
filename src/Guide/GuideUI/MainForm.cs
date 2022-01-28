@@ -200,7 +200,7 @@ namespace GuideUI
                     $"({range.Min} - {range.Max}{stringUnit})";
             }
         }
-        //TODO: дубль+
+
         /// <summary>
         /// Событие, при фотрере фокуса с элемента TextBox
         /// </summary>
@@ -213,7 +213,7 @@ namespace GuideUI
             CheckValueInTextBox((TextBox)sender, key);
             ValidateAllValues();
         }
-        //TODO: дубль+
+
         /// <summary>
         /// Событие, при наведении фокуса на элемент TextBox
         /// </summary>

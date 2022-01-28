@@ -189,7 +189,6 @@ namespace Guide
                 if (Validator.ValidateRange(value, range.Min, range.Max))
                 {
                     _attachmentStrokeWidth = value;
-                    //TODO: RSDN+
                     _rangeDictionary[ParameterNames.AttachmentStrokeLength] =
                         new Range(5 * _attachmentStrokeWidth, 90);
                     return;
@@ -204,8 +203,7 @@ namespace Guide
         /// </summary>
         public Dictionary<ParameterNames, Range> RangeDictionary =>
             _rangeDictionary;
-
-        //TODO: XML+
+        
         /// <summary>
         /// Вызов исключения с сообщением об ошибке
         /// </summary>

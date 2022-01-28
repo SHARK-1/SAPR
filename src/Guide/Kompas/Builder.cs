@@ -210,7 +210,7 @@ namespace Kompas
                 ksGetCurvePerpendicular(line, point[0], point[1]);
             double halfStrokeWidth =
                 _guideParameters.AttachmentStrokeWidth / 2;
-            //TODO:+
+
             double[,] attachmentpoints = new double[6, 2];
             for (int i = 0; i < 6; i++)
             {

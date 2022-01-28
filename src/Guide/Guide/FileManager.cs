@@ -56,7 +56,6 @@ namespace Guide
                 return parameters;
             }
             JsonSerializer serializer = new JsonSerializer();
-            //TODO: RSDN+
             using (StreamReader streamReader = new StreamReader(path))
             {
                 using (JsonReader jsonReader = 
